@@ -1,8 +1,10 @@
 # Project's name
 
+Lottery Wallet
+
 ## Description
 
-This application is called XXX. It is used for ...
+This application is called Lottery Wallet. It is used for ...
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](picture.png)
