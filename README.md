@@ -4,7 +4,7 @@ Lottery Wallet
 
 ## Description
 
-This application is called Lottery Wallet. It is used for ...
+This application is called Lottery Wallet. It is used for to storage all Primitiva bets of a user, check it there is any prize or consult the historic results and some stadistic data 
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](picture.png)
@@ -32,10 +32,16 @@ npm run start
 - User can sign up and create a new account
 - User can login
 - User can log out
+- User can delete a user.
+
+- User can create, edit, delete tickets bet
+
 
 ### Backlog
 
-- User can ...
+- User can connect the App to an API for get the Primitiva's results.
+- To do stadistics with the data from API.
+
 
 ---
 
