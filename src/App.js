@@ -1,5 +1,6 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Home from './views/Home';
 import Navbar from './components/Navbar';
@@ -11,20 +12,30 @@ import IsPrivate from './components/IsPrivate';
 import UserBets from './views/UserBets';
 import ResultsAndStadistic from './views/ResultsAndStadistics';
 import BetUserDetails from './views/BetUserDetails';
-import UserAdmin from './views/auth/UserAdmin';
+import UserProfile from './views/auth/UserProfile';
 import NewUserBet from './views/NewUserBet';
 import BetDetails from './views/BetDetails';
 
-function App() {
+
+function App(props) {
+  
+  const location = useLocation();
+
+  const isCurrentURL = (url) => {
+      return location.pathname.toLowerCase() === url.toLowerCase();
+  }
+  
   return (
     <div className="App">
+
       <Toaster/>
-      <Navbar />
+   
+      { isCurrentURL('/') ? null: <Navbar /> }
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user-admin/:id" element={<IsPrivate><UserAdmin /></IsPrivate>} />
+        <Route path="/user-profile/:id" element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path="/new-bet-primitiva/:id" element={<IsPrivate><NewUserBet/></IsPrivate>}/>
         <Route path="/user-bets-primitiva/:id" element={<IsPrivate><UserBets/></IsPrivate>}/>
         <Route path="/bet-details-primitiva/:id" element={<IsPrivate><BetUserDetails/></IsPrivate>}/>
