@@ -32,8 +32,8 @@ export default function Login() {
       toast.success('Welcome back!')
       storeToken(response.data.authToken);
       authenticateUser();
-      //console.log(response)
-      navigate('/user-profile/}');
+      // console.log(response)
+      navigate(`/user-profile/`);
     } catch (error) {
       setErrorMessage(error.response.data.error)
     }

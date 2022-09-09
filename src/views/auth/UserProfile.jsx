@@ -30,9 +30,9 @@ export default function UserProfile() {
         <div>
              <h1>Profile page</h1>
 
-            {userData && userData.map(userData => {
-                return <div className="profile-pict" key={userData._id}>
-                    <h2>Name: {userData.username}</h2>
+            {userData && userData.map(user => {
+                return <div className="profile-pict" key={user._id}>
+                    <h2>Name: {user.username}</h2>
                 </div>
 
              } )}
