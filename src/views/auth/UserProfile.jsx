@@ -14,8 +14,8 @@ export default function UserProfile() {
     useEffect(() => {
         const getDataUser = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/v1/users/`)
-                // console.log(response)
+                const response = await axios.get(`http://localhost:8000/api/v1/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
+                console.log(response)
                 setUserData(response.data.data)
             }
             catch (error) {
@@ -23,19 +23,19 @@ export default function UserProfile() {
             }
         }
     getDataUser();
-    }, [id])
+    }, [])
     
 
     return (
         <div>
              <h1>Profile page</h1>
+            {userData && (
+                <div className="user-profile">
+                    <h2><span>User name:</span> {userData.username} </h2>
 
-            {userData && userData.map(user => {
-                return <div className="profile-pict" key={user._id}>
-                    <h2>Name: {user.username}</h2>
                 </div>
 
-             } )}
+           )}
 
         </div>
     )

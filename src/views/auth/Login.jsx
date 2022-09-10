@@ -2,12 +2,9 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-
-  const {id} = useParams();
-  
   const { storeToken, authenticateUser } = useContext(AuthContext);
   const [user, setUser] = useState({
     email: '',
@@ -32,7 +29,7 @@ export default function Login() {
       toast.success('Welcome back!')
       storeToken(response.data.authToken);
       authenticateUser();
-      // console.log(response)
+      console.log(response)
       navigate(`/user-profile/`);
     } catch (error) {
       setErrorMessage(error.response.data.error)
