@@ -4,13 +4,10 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 export default function UserProfile() {
-
     const [userData, setUserData] = useState(null);
     const storedToken = localStorage.getItem('authToken');
     const {id} = useParams();
-    const navigate = useNavigate();
-
-
+ 
     useEffect(() => {
         const getDataUser = async () => {
             try {
@@ -34,10 +31,7 @@ export default function UserProfile() {
                     <h2><span>User name:</span> {userData.username} </h2>
 
                 </div>
-
            )}
-
         </div>
     )
-
 }
