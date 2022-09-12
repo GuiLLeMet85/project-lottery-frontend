@@ -35,7 +35,7 @@ function App(props) {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user-profile" element={<IsPrivate><UserProfile /></IsPrivate>} />
+        <Route path="/perfil-usuario" element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path="/apostar-primitiva/" element={<IsPrivate><NewBet/></IsPrivate>}/>
         <Route path="/listado-apuestas-primitiva/" element={<IsPrivate><UserBets/></IsPrivate>}/>
         <Route path="/bet-details-primitiva/:id" element={<IsPrivate><BetUserDetails/></IsPrivate>}/>

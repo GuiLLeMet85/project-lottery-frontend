@@ -30,7 +30,7 @@ export default function Login() {
       storeToken(response.data.authToken);
       authenticateUser();
       console.log(response)
-      navigate(`/user-profile/`);
+      navigate(`/perfil-usuario/`);
     } catch (error) {
       setErrorMessage(error.response.data.error)
     }

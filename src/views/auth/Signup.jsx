@@ -40,18 +40,44 @@ export default function Signup() {
     }
   }
 
+  const handleFileUpload = async(e) => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/user/upload`, uploadData);
+      console.log(response.data.fileUrl);
+
+      setUser(prev => {
+        return {
+          ...prev,
+          imageUrl: response.data.fileUrl
+        }
+      })
+
+      // In case of multiple file upload
+      // setImageUrls(prev => [...prev, response.data.fileUrl]);
+      // setImgForUser(prev => [...prev, e.target.files[0].name]);
+
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
+        <label>Nombre de usuario</label>
         <input required type="text" name="username" value={user.username} onChange={handleChange} />
-        <label>Email</label>
+        <label>Dirección eMail</label>
         <input required type="email" name="email" value={user.email} onChange={handleChange} />
-        <label>Password</label>
+        <label>Contraseña</label>
         <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
-        <label>Repeat the password</label>
+        <label>Repite la contraseña</label>
         <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        <label>Selecciona imagen de perfil</label>
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
         <button type="submit">Register</button>
       </form>
     </div>

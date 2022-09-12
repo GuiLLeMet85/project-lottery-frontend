@@ -12,7 +12,7 @@ export default function Navbar() {
         <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/">Home</NavLink></li>
         {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup">Sign up</NavLink></li>}
         {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login">Login</NavLink></li>}
-        {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/private">Private view</NavLink></li>}
+        {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/perfil-usuario">Perfil</NavLink></li>}
         {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/apostar-primitiva/">Jugar</NavLink></li>}
         {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/listado-apuestas-primitiva/">Apuestas hechas</NavLink></li>}
         {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
