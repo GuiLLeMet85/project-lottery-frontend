@@ -52,9 +52,9 @@ const navigate = useNavigate();
     }
   }
 
-  const handleAddNumber = (num) => {
-    setBetNumber(prev => [...prev, num] )
-  }
+  // const handleAddNumber = (num) => {
+  //   setBetNumber(prev => [...prev, num] )
+  // }
 
   return (
     <div>
@@ -73,8 +73,8 @@ const navigate = useNavigate();
               <h2>Numbers table</h2>
                   <NumbersTable limit={49} />
 
-                  <button onClick={() => handleAddNumber(1)}>1</button>
-        <button onClick={() => handleAddNumber(2)}>2</button>
+                  {/* <button onClick={() => handleAddNumber(1)}>1</button>
+        <button onClick={() => handleAddNumber(2)}>2</button> */}
               </section>
       </div>
 
