@@ -52,9 +52,9 @@ const navigate = useNavigate();
     }
   }
 
-  const handleAddNumber = (num) => {
-    setBetNumber(prev => [...prev, num] )
-  }
+  // const handleAddNumber = (num) => {
+  //   setBetNumber(prev => [...prev, num] )
+  // }
 
   return (
     <div>
