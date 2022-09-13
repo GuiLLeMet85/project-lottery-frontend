@@ -9,7 +9,7 @@ export default function Signup() {
     userPicture: '',
     phoneNum: ''
   })
-  
+
   const [password, setPassword] = useState('');
   const [passwordControl, setPasswordControl] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -36,7 +36,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, phoneNum: user.phoneNum,  });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password});
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
@@ -48,20 +48,16 @@ export default function Signup() {
     uploadData.append("userPicture", e.target.files[0]);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/user/upload`, uploadData);
-      console.log(response.data.fileUrl);
-
+      // console.log(response.data.fileUrl);
       setUser(prev => {
         return {
           ...prev,
           userPicture: response.data.fileUrl
         }
       })
-
       // In case of multiple file upload
       // setImageUrls(prev => [...prev, response.data.fileUrl]);
       // setImgForUser(prev => [...prev, e.target.files[0].name]);
-
-
     } catch (error) {
       console.error(error);
     }
