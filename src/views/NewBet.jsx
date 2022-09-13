@@ -18,6 +18,8 @@ export default function NewBet() {
     num5: '',
     numReint:'',
   })
+  const [betNunber, setBetNumber] = useState([]);
+  const [reinNumber, setReinNumber] = useState([]);
 
   const handleChange = (e) => {
     //const conditionalValue = e.target.name === 'numbers.num0' && e.target.name === 'numbers.num1' && e.target.name === 'numbers.num2' &&  e.target.name === 'numbers.num3' &&  e.target.name === 'numbers.num4' &&  e.target.name === 'numbers.num5' &&  e.target.name === 'numReint'  &&  e.target.name === 'euroBet' ? parseInt(e.target.value) : e.target.value;
@@ -28,6 +30,11 @@ export default function NewBet() {
         [e.target.name]: conditionalValue
       }
     })
+  }
+
+  const updateBetNumbers = (num) => {
+    setBetNumber(num);
+    console.log(betNunber);
   }
 
   const handleSubmit = async (e) => {
@@ -70,7 +77,7 @@ export default function NewBet() {
       <input type="number" name="numReint" placeholder="from 0 to 9" value={newBet.numReint} min='0' max='9' onChange={handleChange} /> */}
           <section className='numbers-sect'>
                 <h2>Selecciona los números</h2>
-                    <NumbersTable limit={49} />
+                    <NumbersTable updateBetNumbers={updateBetNumbers} limit={49} />
                 <h2>Selecciona el reintegro</h2>
                     <NumbersReintegro limit={9} />
           </section>

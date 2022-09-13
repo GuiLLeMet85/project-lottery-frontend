@@ -4,7 +4,7 @@ export default function ReintNumbers ({limit}) {
     const [betNumReint, setBetNumReint] = useState([]);
     
     const reintNumbers = []
-    for (let i = 1; i <= limit; i++) {
+    for (let i = 0; i <= limit; i++) {
         reintNumbers.push(i)
     }
     

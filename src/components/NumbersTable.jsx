@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-export default function NumbersTable ({limit}) {
+export default function NumbersTable ({limit, updateBetNumbers}) {
     const [betNumbers, setBetNumbers] = useState([]);
+    
     
     const numbers = []
     for (let i = 1; i <= limit; i++) {
@@ -10,6 +11,10 @@ export default function NumbersTable ({limit}) {
 
     const handleAddNumber = (num) => {
         setBetNumbers(prev => [...prev, num] )
+        // If numbers no es mes gran que 6, fes aixo,
+        updateBetNumbers(betNumbers);
+        // else
+        console.log(betNumbers)
     }
       
 return (

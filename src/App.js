@@ -10,11 +10,9 @@ import Login from './views/auth/Login';
 import PrivateView from './views/PrivateView';
 import IsPrivate from './components/IsPrivate';
 import UserBets from './views/UserBets';
-import ResultsAndStadistic from './views/ResultsAndStadistics';
-import BetUserDetails from './views/BetUserDetails';
 import UserProfile from './views/auth/UserProfile';
 import NewBet from './views/NewBet';
-import BetDetails from './views/BetDetails';
+import BetDetails from './components/BetDetails';
 
 
 function App(props) {
@@ -37,14 +35,10 @@ function App(props) {
         <Route path="/login" element={<Login />} />
         <Route path="/perfil-usuario" element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path="/apostar-primitiva/" element={<IsPrivate><NewBet/></IsPrivate>}/>
-        <Route path="/listado-apuestas-primitiva/" element={<IsPrivate><UserBets/></IsPrivate>}/>
-        <Route path="/bet-details-primitiva/:id" element={<IsPrivate><BetUserDetails/></IsPrivate>}/>
-       
-        <Route path="/results-stadistics-primitiva" element={<ResultsAndStadistic />} />
-        <Route path="/results-primitiva-details/id" element={<BetDetails />} />
-
+        <Route path="/listado-apuestas-primitiva/" element={<IsPrivate><UserBets/></IsPrivate>}/> 
+        {/* <Route path="/results-stadistics-primitiva" element={<ResultsAndStadistic />} />
+        <Route path="/results-primitiva-details/:id" element={<BetDetails />} /> */}
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
-   
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
