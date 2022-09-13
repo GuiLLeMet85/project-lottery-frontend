@@ -7,7 +7,6 @@ import NumbersReintegro from '../components/ReintegroPrimi'
 export default function NewBet() {
   const storedToken = localStorage.getItem('authToken');
   const navigate = useNavigate();
-  const [betNumber, setBetNumber] = useState([]);
   const [newBet, setNewBet] = useState({
     dateLottery: '',
     //numbers: {num0: '', num1: '', num2:'', num3: '', num4: '', num5: ''},
