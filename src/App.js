@@ -36,8 +36,6 @@ function App(props) {
         <Route path="/perfil-usuario" element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path="/apostar-primitiva/" element={<IsPrivate><NewBet/></IsPrivate>}/>
         <Route path="/listado-apuestas-primitiva/" element={<IsPrivate><UserBets/></IsPrivate>}/> 
-        {/* <Route path="/results-stadistics-primitiva" element={<ResultsAndStadistic />} />
-        <Route path="/results-primitiva-details/:id" element={<BetDetails />} /> */}
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

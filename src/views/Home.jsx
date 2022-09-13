@@ -6,8 +6,6 @@ export default function Home() {
   return (
     <div className='main-section'>
 
-   
-
       <h1> Welcome to Lottery Wallet</h1>
 
       <div className='bts-section-home'>
