@@ -5,8 +5,11 @@ import axios from 'axios';
 export default function Signup() {
   const [user, setUser] = useState({
     username: '',
-    email: ''
+    email: '',
+    userPicture: '',
+    phoneNum: ''
   })
+  
   const [password, setPassword] = useState('');
   const [passwordControl, setPasswordControl] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -33,7 +36,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, phoneNum: user.phoneNum,  });
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
@@ -42,7 +45,7 @@ export default function Signup() {
 
   const handleFileUpload = async(e) => {
     const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0]);
+    uploadData.append("userPicture", e.target.files[0]);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/user/upload`, uploadData);
       console.log(response.data.fileUrl);
@@ -50,7 +53,7 @@ export default function Signup() {
       setUser(prev => {
         return {
           ...prev,
-          imageUrl: response.data.fileUrl
+          userPicture: response.data.fileUrl
         }
       })
 
@@ -71,6 +74,8 @@ export default function Signup() {
         <input required type="text" name="username" value={user.username} onChange={handleChange} />
         <label>Dirección eMail</label>
         <input required type="email" name="email" value={user.email} onChange={handleChange} />
+        <label>Teléfono contactol</label>
+        <input required type="phone" name="phoneNum" value={user.phoneNum} onChange={handleChange} />
         <label>Contraseña</label>
         <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
         <label>Repite la contraseña</label>
