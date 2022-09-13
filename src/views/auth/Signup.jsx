@@ -36,7 +36,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password});
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, phoneNum: user.phoneNum, userPicture: user.userPicture, password});
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
@@ -55,9 +55,6 @@ export default function Signup() {
           userPicture: response.data.fileUrl
         }
       })
-      // In case of multiple file upload
-      // setImageUrls(prev => [...prev, response.data.fileUrl]);
-      // setImgForUser(prev => [...prev, e.target.files[0].name]);
     } catch (error) {
       console.error(error);
     }
@@ -79,7 +76,7 @@ export default function Signup() {
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <label>Selecciona imagen de perfil</label>
         <input type="file" onChange={(e) => handleFileUpload(e)} />
-        <button type="submit">Register</button>
+        <button type="submit">Registrarse</button>
       </form>
     </div>
   )

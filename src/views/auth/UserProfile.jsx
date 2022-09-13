@@ -8,12 +8,14 @@ export default function UserProfile() {
     const storedToken = localStorage.getItem('authToken');
     const navigate = useNavigate();
     const { user, logOutUser } = useContext(AuthContext);
+    const [errorMessage, setErrorMessage] = useState(undefined);
     const [userData, setUserData] = useState({
         username: user.username,
         email: user.email,
-        userPicture: user.userPicture
+        userPicture: user.userPicture,
+        phoneNum: user.phoneNum
       })
- 
+  
     useEffect(() => {
         const getDataUser = async () => {
             try {
@@ -76,16 +78,34 @@ export default function UserProfile() {
        
                 <div className="user-profile">
                     <h2><span>User name:</span> {userData.username} </h2>
-                    <form onSubmit={handleSubmit}>
-                        <img src={userData.userPicture} alt="user profile"></img>
+                    <img src={userData.userPicture} alt="user profile"></img>
+                    {/* <form onSubmit={handleSubmit}>
+                        
                         <input type="file" onChange={(e) => handleFileUpload(e)} />
                         <input required type="text" name="username" value={userData.username} onChange={handleChange} />
                         <input required type="email" name="email" value={userData.email} onChange={handleChange} />
                         <button type="submit">Save changes and log out</button>
-                    </form>
+                    </form> */}
 
+
+
+                    <form onSubmit={handleSubmit}>
+                        <label>Nombre de usuario</label>
+                        <input required type="text" name="username" value={userData.username} onChange={handleChange} />
+                        <label>Dirección eMail</label>
+                        <input required type="email" name="email" value={userData.email} onChange={handleChange} />
+                        <label>Teléfono contactol</label>
+                        <input required type="phone" name="phoneNum" value={user.phoneNum} onChange={handleChange} />
+                        {/* <label>Contraseña</label> */}
+                        {/* <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
+                        <label>Repite la contraseña</label>
+                        <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} /> */}
+                        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                        <label>Selecciona imagen de perfil</label>
+                        <input type="file" onChange={(e) => handleChange(e)} />
+                        <button type="submit">Save changes and log out</button>
+                    </form>
                 </div>
-       
         </div>
     )
 }
