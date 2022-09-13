@@ -10,7 +10,8 @@ export default function UserProfile() {
     const { user, logOutUser } = useContext(AuthContext);
     const [userData, setUserData] = useState({
         username: user.username,
-        email: user.email
+        email: user.email,
+        userPicture: user.userPicture
       })
  
     useEffect(() => {
@@ -49,6 +50,26 @@ export default function UserProfile() {
     })
   }
 
+  const handleFileUpload = async(e) => {
+    const uploadData = new FormData();
+    uploadData.append("userPicture", e.target.files[0]);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/user/upload`, uploadData);
+      // console.log(response.data.fileUrl);
+      setUserData(prev => {
+        return {
+          ...prev,
+          userPicture: response.data.fileUrl
+        }
+      })
+      // In case of multiple file upload
+      // setImageUrls(prev => [...prev, response.data.fileUrl]);
+      // setImgForUser(prev => [...prev, e.target.files[0].name]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
     return (
         <div>
              <h1>Profile page</h1>
@@ -56,6 +77,8 @@ export default function UserProfile() {
                 <div className="user-profile">
                     <h2><span>User name:</span> {userData.username} </h2>
                     <form onSubmit={handleSubmit}>
+                        <img src={userData.userPicture} alt="user profile"></img>
+                        <input type="file" onChange={(e) => handleFileUpload(e)} />
                         <input required type="text" name="username" value={userData.username} onChange={handleChange} />
                         <input required type="email" name="email" value={userData.email} onChange={handleChange} />
                         <button type="submit">Save changes and log out</button>
