@@ -70,7 +70,7 @@ export default function UserProfile() {
 
     const handleDelete = async () => {
       try {
-        await axios.delete(`${process.env.REACT_APP_API_URL}/delete/`, userData, { headers: { Authorization: `Bearer ${storedToken}` } });
+        await axios.delete(`${process.env.REACT_APP_API_URL}/user/delete/`, userData, { headers: { Authorization: `Bearer ${storedToken}` } });
         navigate('/');
       } 
       catch (error) {
