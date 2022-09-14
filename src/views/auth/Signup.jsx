@@ -8,6 +8,7 @@ export default function Signup() {
           email: ''
         })
 
+        
         const [password, setPassword] = useState('');
         const [passwordControl, setPasswordControl] = useState('');
         const [errorMessage, setErrorMessage] = useState(undefined);
