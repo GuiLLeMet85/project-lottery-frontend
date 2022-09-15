@@ -8,7 +8,6 @@ export default function Signup() {
           email: ''
         })
 
-
         const [password, setPassword] = useState('');
         const [passwordControl, setPasswordControl] = useState('');
         const [errorMessage, setErrorMessage] = useState(undefined);
@@ -37,7 +36,7 @@ export default function Signup() {
           e.preventDefault();
           try {
             await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password});
-            // navigate('/login');
+            navigate('/login');
             // navigate('/perfil-usuario');
           } catch (error) {
             setErrorMessage(error.response.data.error)

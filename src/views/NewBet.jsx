@@ -40,19 +40,17 @@ export default function NewBet() {
   const handleSubmit = async (e) => {
     const betToSend = {
       dateLottery: newBet.dateLottery,
-      numbers: {
-        num0: newBet.num0,
-        num1: newBet.num1,
-        num2: newBet.num2,
-        num3: newBet.num3,
-        num4: newBet.num4,
-        num5: newBet.num5,
-      },
+      num0: newBet.num0,
+      num1: newBet.num1,
+      num2: newBet.num2,
+      num3: newBet.num3,
+      num4: newBet.num4,
+      num5: newBet.num5,
       numReint: newBet.numReint,
     }
     e.preventDefault();
     try {
-      const userBetNew = await axios.post('http://localhost:8000/api/v1/betusers', betToSend,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const userBetNew = await axios.post(`${process.env.REACT_APP_API_URL}/bets`, betToSend,{ headers: { Authorization: `Bearer ${storedToken}` } });
       navigate(`/projects/${userBetNew.data.data._id}`)
     } catch (error) {
       console.error(error);
@@ -65,22 +63,24 @@ export default function NewBet() {
 
   return (
     <div>
+       <h2>Selecciona la fecha y la combinación del sorteo</h2>
     <form onSubmit={handleSubmit} className='padding2x2'>
-              <h2>Selecciona la fecha del sorteo</h2>
+      <label>Fecha sorteo</label>
       <input type="date" name="dateLottery" value={newBet.dateLottery} onChange={handleChange} />
-      {/* <input type="number" name="num0" placeholder="from 1 to 49" value={newBet.num0} min='01' max='49' onChange={handleChange} />
+      <input type="number" name="num0" placeholder="from 1 to 49" value={newBet.num0} min='01' max='49' onChange={handleChange} />
       <input type="number" name="num1" placeholder="from 1 to 49" value={newBet.num1} min='01' max='49' onChange={handleChange} />
       <input type="number" name="num2" placeholder="from 1 to 49" value={newBet.num2} min='01' max='49' onChange={handleChange} />
       <input type="number" name="num3" placeholder="from 1 to 49" value={newBet.num3} min='01' max='49' onChange={handleChange} />
       <input type="number" name="num4" placeholder="from 1 to 49" value={newBet.num4} min='01' max='49' onChange={handleChange} />
       <input type="number" name="num5" placeholder="from 1 to 49" value={newBet.num5} min='01' max='49' onChange={handleChange} />
-      <input type="number" name="numReint" placeholder="from 0 to 9" value={newBet.numReint} min='0' max='9' onChange={handleChange} /> */}
-          <section className='numbers-sect'>
+      <label>Reintegro</label>
+      <input type="number" name="numReint" placeholder="from 0 to 9" value={newBet.numReint} min='0' max='9' onChange={handleChange} />
+          {/* <section className='numbers-sect'>
                 <h2>Selecciona los números</h2>
                     <NumbersTable updateBetNumbers={updateBetNumbers} limit={49} />
                 <h2>Selecciona el reintegro</h2>
                     <NumbersReintegro limit={9} />
-          </section>
+          </section> */}
                 <button type="submit" className='sub-bt'>Save</button>
             </form>
     </div>
