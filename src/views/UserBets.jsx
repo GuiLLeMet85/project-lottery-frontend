@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
-import BetUser from "../components/BetDetails"; 
 
 export default function UserBets() {
     const [bets, setBets] = useState(null);
@@ -23,18 +22,12 @@ export default function UserBets() {
 
     return (
         <div>
-        <h1>Mis apuestas Primitiva</h1>
-        {!bets && <p>Loading</p>}
-        {bets && bets.map(bet => {
-        return <p key={bet._id}><Link to={`/betusers/${bet._id}`}>{bet.numComplem}</Link></p>
-        
-      })}
-      <Outlet />
-       
-        {/* <BetUser /> */}
-       
+            <h1>Mis apuestas Primitiva</h1>
+            {!bets && <p>Loading</p>}
+            {bets && bets.map(bet => {
+            return <p key={bet._id}><Link to={`/bets/${bet._id}`}>{bet.dateLottery}</Link></p>
+            })}
+            <Outlet />
         </div>
     )
 }
-
-

@@ -12,7 +12,7 @@ import IsPrivate from './components/IsPrivate';
 import UserBets from './views/UserBets';
 import UserProfile from './views/auth/UserProfile';
 import NewBet from './views/NewBet';
-import BetDetails from './components/BetDetails';
+import BetDetails from './views/BetDetails';
 
 
 function App(props) {
@@ -36,6 +36,7 @@ function App(props) {
         <Route path="/perfil-usuario" element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path="/apostar-primitiva/" element={<IsPrivate><NewBet/></IsPrivate>}/>
         <Route path="/listado-apuestas-primitiva/" element={<IsPrivate><UserBets/></IsPrivate>}/> 
+        <Route path="/detalles-jugada/" element={<IsPrivate><BetDetails/></IsPrivate>}/> 
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
