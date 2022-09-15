@@ -25,7 +25,16 @@ export default function UserBets() {
             <h1>Mis apuestas Primitiva</h1>
             {!bets && <p>Loading</p>}
             {bets && bets.map(bet => {
-            return <p key={bet._id}><Link to={`/bets/${bet._id}`}>{bet.dateLottery}</Link></p>
+            return <div key={bet._id}>
+                <Link to={`/detalles-apuesta/${bet._id}`}>
+                
+                <p>Fecha:</p><h3>{bet.dateLottery}</h3>
+                <p>Números</p><h3>{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </h3>
+                <p>Reintegro</p><h3>{bet.numRein}</h3>
+                
+                </Link>
+                
+                </div>
             })}
             <Outlet />
         </div>
