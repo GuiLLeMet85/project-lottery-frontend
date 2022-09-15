@@ -101,8 +101,7 @@ export default function UserProfile() {
                 </div>
 
               <h3>¿Quieres borrar tu usuario?</h3>
-
-              <button onClick= {handleDelete}>Eliminar usuario</button>
+                 <button onClick= {handleDelete}>Eliminar usuario</button>
 
 
         </div>

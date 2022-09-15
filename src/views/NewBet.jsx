@@ -42,16 +42,12 @@ export default function NewBet() {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/bets`, newBet,{ headers: { Authorization: `Bearer ${storedToken}`}});
       toast.success('Item added succesfully!');
-      // navigate(`/`)
       navigate(`/listado-apuestas-primitiva/`)
     } catch (error) {
       setErrorMessage(error.response.data.error)
     }
   }
 
-  // const handleAddNumber = (num) => {
-  //   setBetNumber(prev => [...prev, num] )
-  // }
 
   return (
     <div>

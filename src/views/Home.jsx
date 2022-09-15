@@ -10,7 +10,7 @@ export default function Home() {
 
       <div className='bts-section-home'>
         <button><Link to="/login">Log In</Link></button>
-        <button><Link to="/signin">Sign In</Link></button>
+        <button><Link to="/signup">Sign In</Link></button>
       </div>
 
     </div>

@@ -12,11 +12,10 @@ export default function BetDetails(props) {
     const navigate = useNavigate();
     const [bet, setBet] = useState(null);
     
-    
         useEffect(() => {
         const getData = async () => {
           try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/${id}`)
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             //console.log(response);
             setBet(response.data.data)
           } catch (error) {
@@ -29,6 +28,8 @@ export default function BetDetails(props) {
 
      return (
         <div className='bet-card' key={betUser._id}>
+
+            <h1>Hello</h1>
             {betUser && (
                 <div className="bet-info">
                 <div className="lottery-pict">

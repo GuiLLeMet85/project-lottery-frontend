@@ -30,7 +30,7 @@ export default function UserBets() {
                 
                 <p>Fecha:</p><h3>{bet.dateLottery}</h3>
                 <p>Números</p><h3>{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </h3>
-                <p>Reintegro</p><h3>{bet.numRein}</h3>
+                <p>Reintegro</p><h3>{bet.numReint}</h3>
                 
                 </Link>
                 
