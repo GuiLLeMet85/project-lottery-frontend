@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function NewBet() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const storedToken = localStorage.getItem('authToken');
+  //const [errorRepeatMessage, setErrorRepeatMessage] = useState(null);
   const navigate = useNavigate();
 
   const [newBet, setNewBet] = useState({

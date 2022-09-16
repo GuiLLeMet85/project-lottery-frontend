@@ -11,18 +11,23 @@ export default function UserProfile() {
     // const { id } = useParams();
     const [errorMessage, setErrorMessage] = useState(undefined);
     const [userData, setUserData] = useState({
-        username: user.username,
-        email: user.email,
-        userPicture: user.userPicture,
-        phoneNum: user.phoneNum
+        username: '',
+        email: '',
+        userPicture: '',
+        phoneNum: ''
       })
 
    useEffect(() => {
         const getDataUser = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
-                // console.log(response)
-                setUserData(response.data.data)
+                console.log(response.data.data)
+                setUserData({
+                  username: response.data.data.username,
+                  email: response.data.data.email,
+                  userPicture: response.data.data.userPicture,
+                  phoneNum: response.data.data.phoneNum
+                })
             }
             catch (error) {
                 console.error(error)
@@ -68,9 +73,9 @@ export default function UserProfile() {
       }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async () => { 
       try {
-        await axios.delete(`${process.env.REACT_APP_API_URL}/user/delete/`, userData, { headers: { Authorization: `Bearer ${storedToken}` } });
+        await axios.delete(`${process.env.REACT_APP_API_URL}/user/delete/`, { headers: { Authorization: `Bearer ${storedToken}` } });
         navigate('/');
       } 
       catch (error) {
