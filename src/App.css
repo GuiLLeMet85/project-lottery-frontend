@@ -18,7 +18,8 @@
 body {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--light-blue);
+  background-color: var(--soft-blue);
+  color: var(--dark-blue);
   background-size: cover;
   height: 95vh;
 }
@@ -55,7 +56,7 @@ button {
 }
 
 a {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 h1 {
@@ -106,17 +107,45 @@ h6 {
 .navbar .hello {
   display: flex;
   flex-direction: column;
-  background-color: #0077B6;
+  background-color: var(--light-blue); 
   height: 100vh;
   width: 75vw;;
   position: fixed;
   margin-top: 7.5vh
-
 }
 
-.navbar ul {
+.navbar .bt-top {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.navbar .profile-pict-menu {
+  width: 50vw;
+}
+
+.navbar .icon-nav {
+  color: var(--dark-blue);
+}
+
+.navbar .icon-nav-top {
+  font-size: 1.5rem;
+  color: var(--dark-blue);
+}
+
+.icon-navbar-sect {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.hello .title-icon-nav {
+  color: var(--dark-blue);
+}
+
+.hello .title-icon-nav {
+  margin-left: 4vw ;
 }
 
 /* Footer */
@@ -124,7 +153,6 @@ h6 {
 footer {
   display: flex;
   justify-content: space-evenly;
-  padding: 5px;
   background-color: var(--blue);
   color: #fff;
   bottom: 0;
@@ -228,6 +256,9 @@ button.bt-home {
   padding: 2vh 5vw;
 }
 
+.padding1h5w {
+  padding: 1vh 5vw;
+}
 .padding2h1w {
   padding: 2vh 1vw;
 }
@@ -260,8 +291,79 @@ button.bt-home {
   background-color: var(--dark-blue);
 }
 
+.bt-submit {
+  width: 50vw;
+  background-color: var(--blue); ;
+  height: 5vh;
+  margin: 4vh auto;
+  color:white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
 
+.bt-delete {
+  width: 30vw;
+  background-color: var(--blue);
+  height: 5vh;
+  margin: 4vh auto;
+  color:white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 
+}
 /* Icon Styles */
 
+/* Login Page*/
 
+.title-page {
+  padding: 4vh 0 2vh;
+}
+
+.background-top-login {
+  height: 15vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../src/img/ishan-seefromthesky-rj8fMHNPXbg-unsplash.jpg');
+}
+
+.background-top-signup{
+  height: 15vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../src/img/tim-foster-Sf23azHZRR4-unsplash.jpg');
+} 
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  padding: 1vh 0;
+}
+
+.login-form input {
+  height: 5vh;
+  padding: 1vh 2vw;
+  margin: 0.5vh 0vw;
+}
+
+.title-icon-subm{
+  font-size: 1.2rem;
+  padding: 1vh 2vw;
+}
+
+/* Login Page*/
+
+.profile-top {
+  display: flex;
+  flex-direction: row;
+}
+
+.delete-user p {
+  text-align: center;
+}

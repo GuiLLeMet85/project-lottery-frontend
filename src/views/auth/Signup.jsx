@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
 export default function Signup() {
         const [user, setUser] = useState({
@@ -44,8 +45,13 @@ export default function Signup() {
         }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='signup-page padding2h5w'>
+      <div className='background-top-signup'>
+      </div>
+      <div className="title-page"> 
+          <h1>Darse de alta</h1>
+      </div> 
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>Nombre de usuario</label>
         <input required type="text" name="username" value={user.username} onChange={handleChange} />
         <label>Dirección eMail</label>
@@ -56,8 +62,7 @@ export default function Signup() {
         <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
    
-        <button type="submit">Registrarse</button>
-      </form>
+        <button type="submit" className="bt-submit radius25px"><span className="title-icon-subm">Registrar</span> <FaArrowAltCircleRight className='icon-foot'/> </button>      </form>
     </div>
   )
 }

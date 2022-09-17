@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { FaTrashAlt} from "react-icons/fa";
 
 export default function UserProfile() {
     const storedToken = localStorage.getItem('authToken');
@@ -89,14 +90,26 @@ export default function UserProfile() {
     }
 
     return (
-        <div>
-             <h1>Profile page</h1>
+              <div className='signup-page padding2h5w'>
+              <div className='background-top-signup'>
+              </div>
+              <div className="title-page"> 
+                  <h1>Editar perfil</h1>
+              </div> 
        
                 <div className="user-profile">
-                    <h2><span>User name:</span> {userData.username} </h2>
-                    <img src={userData.userPicture} alt="user profile"></img>
-              
-                    <form onSubmit={handleSubmit}>
+                    <div className="profile-top"> 
+                        <img src={userData.userPicture} alt="user profile"></img>      
+
+                        <div className="delete-user">
+                        <p>¿Quieres borrar tu usuario?</p>
+                            <button type="submit" className="bt-delete radius25px" onClick= {handleDelete}>
+                             <FaTrashAlt  className='title-icon-nav'/>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form className="login-form" onSubmit={handleSubmit}>
                         <label>Nombre de usuario</label>
                         <input required type="text" name="username" value={userData.username} onChange={handleChange} />
                         <label>Dirección eMail</label>
@@ -104,14 +117,13 @@ export default function UserProfile() {
                         <label>Teléfono contacto</label>
                         <input required type="tel" name="phoneNum" value={userData.phoneNum} onChange={handleChange} />
                         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-                        <label>Selecciona imagen de perfil</label>
+                        <label>Cambiar imagen de perfil</label>
                         <input type="file" onChange={(e) => handleFileUpload(e)} />
                         <button type="submit">Save changes and log out</button>
                     </form>
                 </div>
 
-              <h3>¿Quieres borrar tu usuario?</h3>
-                 <button onClick= {handleDelete}>Eliminar usuario</button>
+            
 
 
         </div>
