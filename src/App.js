@@ -13,6 +13,7 @@ import UserBets from './views/UserBets';
 import UserProfile from './views/auth/UserProfile';
 import NewBet from './views/NewBet';
 import BetDetails from './views/BetDetails';
+import Footer from './components/Footer';
 
 
 function App(props) {
@@ -40,6 +41,8 @@ function App(props) {
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }

@@ -17,6 +17,10 @@ export default function UserProfile() {
         phoneNum: ''
       })
 
+  useEffect(()=> {
+    console.log(userData)
+  }, [userData])    
+
    useEffect(() => {
         const getDataUser = async () => {
             try {
@@ -37,10 +41,11 @@ export default function UserProfile() {
     }, [])  
 
     const handleChange = (e) => {
+      const val = e.target.name === 'phoneNum' ? parseInt(e.target.value) : e.target.value
         setUserData(prev => {
           return {
             ...prev,
-            [e.target.name]: e.target.value
+            [e.target.name]: val
           }
         })
     }
