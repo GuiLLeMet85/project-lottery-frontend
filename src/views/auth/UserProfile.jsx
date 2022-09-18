@@ -18,10 +18,7 @@ export default function UserProfile() {
         phoneNum: ''
       })
 
-  useEffect(()=> {
-    console.log(userData)
-  }, [userData])    
-
+ 
    useEffect(() => {
         const getDataUser = async () => {
             try {
@@ -119,7 +116,7 @@ export default function UserProfile() {
                         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                         <label>Cambiar imagen de perfil</label>
                         <input type="file" onChange={(e) => handleFileUpload(e)} />
-                        <button type="submit">Save changes and log out</button>
+                        <button type="submit" className="bt-submit radius25px">Guardar cambios</button>
                     </form>
                 </div>
 

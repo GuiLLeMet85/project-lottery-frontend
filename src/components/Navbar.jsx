@@ -41,7 +41,7 @@ getDataUser();
                 <FaTasks className='icon-nav-top'/> : <FaWindowClose className='icon-nav-top'/>}
             </button>
             <button onClick={() => navigate(-1)}>     
-                <FaArrowCircleLeft className='icon-nav-top'/><span className="title-icon">Atrás</span>
+                <FaArrowCircleLeft className='icon-nav-top'/>
             </button>  
           </div> 
             {

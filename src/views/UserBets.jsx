@@ -20,6 +20,10 @@ export default function UserBets() {
     getBets();
     }, [])
 
+    // const numSorted = [{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5}]
+
+
+
     return (
         <div>
             <h1>Mis apuestas Primitiva</h1>

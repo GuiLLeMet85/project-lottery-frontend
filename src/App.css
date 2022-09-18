@@ -187,8 +187,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 75vh;
-  justify-content: center;
+  height: 100vh;
+  background-color: var(--light-blue); 
+  justify-content: space-evenly;
 }
 
 .greed-home {
@@ -255,6 +256,9 @@ button.bt-home {
 .padding2h5w {
   padding: 2vh 5vw;
 }
+.padding8h5w {
+  padding: 8vh 5vw;
+}
 
 .padding1h5w {
   padding: 1vh 5vw;
@@ -293,7 +297,7 @@ button.bt-home {
 
 .bt-submit {
   width: 50vw;
-  background-color: var(--blue); ;
+  background-color: var(--blue);
   height: 5vh;
   margin: 4vh auto;
   color:white;
@@ -340,6 +344,7 @@ button.bt-home {
 .login-form {
   display: flex;
   flex-direction: column;
+  padding: 5vh 0vw 15vh;
 }
 
 .login-form label {
@@ -357,7 +362,7 @@ button.bt-home {
   padding: 1vh 2vw;
 }
 
-/* Login Page*/
+/* Edit profile*/
 
 .profile-top {
   display: flex;
@@ -366,4 +371,47 @@ button.bt-home {
 
 .delete-user p {
   text-align: center;
+}
+
+/* NewBet page*/
+
+.bet-form {
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 0vw 15vh;
+}
+
+.bet-form label {
+  padding: 2vh 0;
+}
+
+.bet-form input {
+  height: 5vh;
+  width: 15vw;
+  padding: 2vh 2vw;
+  margin: 0.5vh 0vw;
+}
+
+.bet-form input.date-picker {
+  height: 5vh;
+  width: 35vw;
+  padding: 1vh 2vw;
+  margin: 0.5vh 0vw;
+}
+
+.data-bet, .select-numbers, .reintegro-num {
+  margin-bottom: 2vh;
+}
+
+span.note {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--blue);
+}
+
+.background-top-bet {
+  height: 15vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../src/img/hugo-verber-sLcCWpahOog-unsplash.jpg');
 }

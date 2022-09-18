@@ -22,9 +22,7 @@ export default function NewBet() {
 
   const [betNunber, setBetNumber] = useState([]);
 
-  const handleChange = (e) => {
-    //const conditionalValue = e.target.name === 'numbers.num0' && e.target.name === 'numbers.num1' && e.target.name === 'numbers.num2' &&  e.target.name === 'numbers.num3' &&  e.target.name === 'numbers.num4' &&  e.target.name === 'numbers.num5' &&  e.target.name === 'numReint'  &&  e.target.name === 'euroBet' ? parseInt(e.target.value) : e.target.value;
-    const conditionalValue = e.target.name === 'dateLottery' ? e.target.value : parseInt(e.target.value);
+  const handleChange = (e) => {    const conditionalValue = e.target.name === 'dateLottery' ? e.target.value : parseInt(e.target.value);
     setNewBet(prev => {
       return {
         ...prev,
@@ -51,20 +49,37 @@ export default function NewBet() {
 
 
   return (
-    <div>
-       <h2>Selecciona la fecha y la combinación del sorteo</h2>
-            <form onSubmit={handleSubmit} className='padding2x2'>
-              <label>Fecha sorteo</label>
-              <input type="date" name="dateLottery" value={newBet.dateLottery} onChange={handleChange} />
-              <input type="number" name="num0" placeholder="from 1 to 49" value={newBet.num0} min='01' max='49' onChange={handleChange} />
-              <input type="number" name="num1" placeholder="from 1 to 49" value={newBet.num1} min='01' max='49' onChange={handleChange} />
-              <input type="number" name="num2" placeholder="from 1 to 49" value={newBet.num2} min='01' max='49' onChange={handleChange} />
-              <input type="number" name="num3" placeholder="from 1 to 49" value={newBet.num3} min='01' max='49' onChange={handleChange} />
-              <input type="number" name="num4" placeholder="from 1 to 49" value={newBet.num4} min='01' max='49' onChange={handleChange} />
-              <input type="number" name="num5" placeholder="from 1 to 49" value={newBet.num5} min='01' max='49' onChange={handleChange} />
-              <label>Reintegro</label>
-              <input type="number" name="numReint" placeholder="from 0 to 9" value={newBet.numReint} min='0' max='9' onChange={handleChange} />
-              <button type="submit" className='sub-bt'>Save</button>
+    <div className='signup-page padding2h5w'>
+    <div className='background-top-bet'>
+    </div>
+    <div className="title-page"> 
+        <h1>Jugar a la Primitiva </h1>
+    </div> 
+            <form onSubmit={handleSubmit} className='bet-form padding2x2'>
+              <div className='data-bet'>
+                  <label>Fecha sorteo<span className="note"> (lunes, jueves y sábados)</span></label>
+                  <div>
+                  <input className="date-picker" type="date" name="dateLottery" value={newBet.dateLottery} onChange={handleChange} />
+                  </div>
+              </div>
+             <div className='select-numbers'>
+                  <label>Números sorteo <span className="note">(del 01 al 49)</span></label>
+                  <div>    
+                      <input type="number" name="num0" placeholder="1 a 49" value={newBet.num0} min='01' max='49' onChange={handleChange} />
+                      <input type="number" name="num1" placeholder="1 a 49" value={newBet.num1} min='01' max='49' onChange={handleChange} />
+                      <input type="number" name="num2" placeholder="1 a 49" value={newBet.num2} min='01' max='49' onChange={handleChange} />
+                      <input type="number" name="num3" placeholder="1 a 49" value={newBet.num3} min='01' max='49' onChange={handleChange} />
+                      <input type="number" name="num4" placeholder="1 a 49" value={newBet.num4} min='01' max='49' onChange={handleChange} />
+                      <input type="number" name="num5" placeholder="1 a 49" value={newBet.num5} min='01' max='49' onChange={handleChange} />
+                  </div>
+              </div>
+              <div className='reintegro-num'>
+                  <label>Reintegro <span className="note">(del 0 al 09)</span></label>
+                  <div>
+                  <input type="number" name="numReint" placeholder="0 to 9" value={newBet.numReint} min='0' max='9' onChange={handleChange} />
+                  </div>
+              </div>
+              <button type="submit" className='bt-submit radius25px'>Jugar</button>
             </form>
     </div>
   )

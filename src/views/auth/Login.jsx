@@ -53,7 +53,7 @@ export default function Login() {
         <input required type="password" name="password" value={user.password} onChange={handleChange} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <button type="submit" className="bt-submit radius25px"><span className="title-icon-subm">Log in</span> <FaArrowAltCircleRight className='icon-foot'/> </button>
-        <p>Si aun no tienes cuenta <strong> <a href="/signup"> registrate</a></strong></p>
+        <p>Si aun no tienes cuenta, <strong> <a href="/signup">registrate</a></strong></p>
       </form>
     </div>
   )
