@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import {useParams, useNavigate, Link, Outlet } from 'react-router-dom';
 import LogoPrimitiva from '../img/logo-primitiva.png'
 import axios from 'axios';
 import XMark from '../img/circle-xmark-regular.svg'
-import { FaHashtag, FaCalendarAlt } from "react-icons/fa";
+import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes } from "react-icons/fa";
 
 
 
 export default function UserBets() {
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [bets, setBets] = useState(null);
     const storedToken = localStorage.getItem('authToken');
 
@@ -25,8 +27,17 @@ export default function UserBets() {
     getBets();
     }, [])
 
-    // const numSorted = [{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5}]
+    const handleDelete = async () => {
+        try {
+          await axios.delete(`${process.env.REACT_APP_API_URL}/bets/id`, { headers: { Authorization: `Bearer ${storedToken}` } });
+          navigate('/listado-apuestas-primitiva');
+        } catch (error) {
+          console.error(error);
+        }
+    }
+    
 
+    // const numSorted = [{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5}]
 
 
     return (
@@ -38,23 +49,25 @@ export default function UserBets() {
               </div>
             {!bets && <p>Loading</p>}
             {bets && bets.map(bet => {
-            return <div className='bet-card'key={bet._id}>
-                <div className='bet-img'>
-                     <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
-                </div>
-                <div className='info-bet'>
-                    <p><FaHashtag /><span className='data-bet'> {bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </span></p>
-                    <p><FaHashtag /><span className='data-bet'> {bet.numReint}</span></p>
-                    <p><FaCalendarAlt />:<span className='data-bet'> {bet.dateLottery}</span></p>
-                </div>
-                <div className='option-bet'>
-                     <Link to={`/detalles-apuesta/${bet._id}`}><img src={XMark} className="icon-svg" alt="icon"></img> </Link>
-                     {/* <button onClick={() => onDelete(name)} className="delete-bt"> <FaCalendarTimes className="icon-btn"/> </button> */}
-
-
-                </div>
-                
-                </div>
+            return <div>
+                        <div className='bet-card'key={bet._id}>
+                                <div className='bet-img'>
+                                    <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
+                                </div>
+                            <Link to={`/detalles-apuesta/${bet._id}`}>
+                                <div className='info-bet'>
+                                        <p className='date-bet'><FaCalendarAlt className='icons-bet'/>:<span className='date-bet'> {bet.dateLottery}</span></p>
+                                    <div className='combination-bet'>
+                                        <p className='nums-bet'><FaHashtag className='icons-bet' /><span className='data-bet'> {bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </span></p>
+                                        <p className='reint-bet'> <FaRegistered className='icons-bet'/><span className='data-bet'> {bet.numReint}</span></p>
+                                    </div>
+                                </div>
+                            </Link>
+                                <div className='option-bet'>
+                                    <button onClick={handleDelete} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button>
+                                </div>
+                        </div>
+                    </div>
             })}
             <Outlet />
         </div>

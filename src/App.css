@@ -422,23 +422,62 @@ span.note {
   display: flex;
   flex-direction: row;
   width: 90vw;
-  padding: 2vh 0;
+  padding: 2vh 2vw;
   justify-content: space-evenly;
   align-items: center;
   align-content: normal;
+  border: 1px solid;
+  border-radius: 25px;
+  margin-bottom: 2.5vh;
 }
 
 .bet-card img {
-  width: 15vw;
+  width: 18vw;
 }
 
 span.data-bet {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
+
+span.date-bet {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .info-bet {
   width: 65vw;
+  margin: 0 auto;
+  padding-left: 2.5vw;
+  padding-right: 2.55vw;
 }
-.info-bet p {
+p.info-bet  {
   font-size: 0.7rem;
+}
+
+p.date-bet {
+  text-align: center;
+  padding-bottom: 1vh;
+}
+
+p.reint-bet {
+  padding-left: 2vw;
+}
+
+.reint-num {
+  padding-left: 2vw;
+}
+
+img.icon-svg {
+  width: 5vw;
+}
+
+.combination-bet {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.icons-bet{
+  color: var(--blue); 
 }
