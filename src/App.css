@@ -444,7 +444,6 @@ span.note {
   justify-content: center;
   align-items: center;
   align-content: normal;
-  
 }
 
 .bet-card img {
@@ -520,4 +519,11 @@ img.icon-svg {
 
 .filter-bet h2 {
   font-size: 1.5rem;
+}
+
+
+/* Bet details page*/
+
+.bet-details-view {
+  padding-bottom: 15vh;
 }
