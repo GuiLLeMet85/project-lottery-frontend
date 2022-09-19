@@ -11,8 +11,8 @@ export default function Home() {
             <img src={trebolHome} alt="trebol" className='trebol-home'></img>
         </div>
         <div className='bts-section-home padding2h5w'>
-            <button className='bt-home radius25px bk-white'> <Link to="/login">Log In</Link></button>
-            <button className='bt-home radius25px bk-blue'><Link to="/signup">Sign In</Link></button>
+            <button className='bt-home radius25px bk-white'> <Link to="/login">Log in</Link></button>
+            <button className='bt-home radius25px bk-blue'><Link to="/signup">Sign up</Link></button>
         </div>
     </div>
   )

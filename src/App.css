@@ -416,19 +416,24 @@ span.note {
   background-image: url('../src/img/hugo-verber-sLcCWpahOog-unsplash.jpg');
 }
 
-/* BetsUser page*/
+/* Bet Card page*/
+
+.card {
+  border: 1px solid;
+  border-radius: 25px;
+  margin-bottom: 2.5vh;
+  z-index:1
+}
 
 .bet-card {
   display: flex;
   flex-direction: row;
   width: 90vw;
   padding: 2vh 2vw;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   align-content: normal;
-  border: 1px solid;
-  border-radius: 25px;
-  margin-bottom: 2.5vh;
+  
 }
 
 .bet-card img {
@@ -436,7 +441,7 @@ span.note {
 }
 
 span.data-bet {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
@@ -446,10 +451,10 @@ span.date-bet {
 }
 
 .info-bet {
-  width: 65vw;
+  width: 62.5vw;
   margin: 0 auto;
-  padding-left: 2.5vw;
-  padding-right: 2.55vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
 }
 p.info-bet  {
   font-size: 0.7rem;
@@ -461,7 +466,7 @@ p.date-bet {
 }
 
 p.reint-bet {
-  padding-left: 2vw;
+  padding-left: 1vw;
 }
 
 .reint-num {
@@ -480,4 +485,18 @@ img.icon-svg {
 
 .icons-bet{
   color: var(--blue); 
+}
+
+.bottom-card-opt {
+  background-color: #0077B6;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  z-index: 99;
+  border: 0px solid;
+  padding: 0.5vh 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 0.7rem;
+  color: white;
 }

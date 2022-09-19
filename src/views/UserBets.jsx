@@ -49,8 +49,8 @@ export default function UserBets() {
               </div>
             {!bets && <p>Loading</p>}
             {bets && bets.map(bet => {
-            return <div>
-                        <div className='bet-card'key={bet._id}>
+            return <div className='card' key={bet._id}>
+                        <div className='bet-card'>
                                 <div className='bet-img'>
                                     <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
                                 </div>
@@ -67,6 +67,16 @@ export default function UserBets() {
                                     <button onClick={handleDelete} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button>
                                 </div>
                         </div>
+                        <div className='bottom-card-opt'>
+                            <div className='options-bet prized'>
+                            <p>Premiado: {bet.isPrized}</p>
+                            </div>
+                            <div className='options-bet eurobed'>
+                            <p>Invetido: {bet.euroBet}€</p>
+                            </div>
+
+                        </div>   
+                        
                     </div>
             })}
             <Outlet />
