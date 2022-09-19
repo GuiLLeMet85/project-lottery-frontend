@@ -40,7 +40,7 @@ export default function UserBets() {
             }
         }
     getBets();
-    }, [id])
+    }, [])
   
     // const numsBet = [num0, num1  ];
     // const sortNumBets = numsBet()

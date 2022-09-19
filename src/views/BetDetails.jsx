@@ -30,31 +30,28 @@ export default function BetDetails(props) {
           }
         }
         getData();
-      }, [id]);
+      }, []);
 
 
+    
      return (
-        <div className='card' key={bet._id}>
-            
-                        <div className='bet-card'>
-                                <div className='bet-img'>
-                                    <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
-                                </div>
-                         
-                                <div className='option-bet'>
-                                    {/* <button onClick={handleDelete} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button> */}
-                                </div>
-                        </div>
-                        <div className='bottom-card-opt'>
-                            <div className='options-bet prized'>
-                            <p>Premiado: {bet.isPrized}</p>
-                            </div>
-                            <div className='options-bet eurobed'>
-                            <p>Inversión: {bet.euroBet}€</p>
-                            </div>
+               <div className='bet-details-view'>
+               <h1>hello</h1>         
+                        { bet && (
 
-                        </div>   
-                        
-        </div>
-            )}
+                        <p>{bet.dateLottery}</p>
+
+
+
+                        )}
+
+
+
+
+
+               </div> 
+     
+            )
+        
+}
  
