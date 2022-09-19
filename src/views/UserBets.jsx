@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {useParams, useNavigate, Link, Outlet } from 'react-router-dom';
 import LogoPrimitiva from '../img/logo-primitiva.png'
+import toast from 'react-hot-toast';
 import axios from 'axios';
-import XMark from '../img/circle-xmark-regular.svg'
-import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes } from "react-icons/fa";
+import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaFilter, FaSort } from "react-icons/fa";
 
 
 
@@ -12,40 +12,70 @@ export default function UserBets() {
     const navigate = useNavigate();
     const [bets, setBets] = useState(null);
     const storedToken = localStorage.getItem('authToken');
+    const [betNum, setBetNum] = useState({
+        num0: '',
+        num1: '',
+        num2: '',
+        num3: '',
+        num4: '',
+        num5: '',
+      })
 
     useEffect (() => {
         const getBets = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets`, { headers: { Authorization: `Bearer ${storedToken}` } })
-                 console.log(response)
-                setBets(response.data.data)
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/`, { headers: { Authorization: `Bearer ${storedToken}` } })
+                setBets(response.data.data);
+                setBetNum({
+                    num0: response.data.data.num0,
+                    num1: response.data.data.num1,
+                    num2: response.data.data.num2,
+                    num3: response.data.data.num3,
+                    num4: response.data.data.num4,
+                    num5: response.data.data.num5,
+                })
             } 
             catch (error) {
                 console.log(error)
             }
         }
     getBets();
-    }, [])
+    }, [id])
+  
+    // const numsBet = [num0, num1  ];
+    // const sortNumBets = numsBet()
+    // console.log(sort)
+
 
     const handleDelete = async () => {
         try {
-          await axios.delete(`${process.env.REACT_APP_API_URL}/bets/id`, { headers: { Authorization: `Bearer ${storedToken}` } });
+          await axios.delete(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+          toast.success('Bet deleted')
           navigate('/listado-apuestas-primitiva');
         } catch (error) {
           console.error(error);
         }
     }
+
+    const handleSortDate = () => {
+        const sortDate = [...bets].sort((a, b) => a.dateLottery - b.dateLottery);
+        setBets(sortDate);
+      }
     
 
-    // const numSorted = [{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5}]
-
-
     return (
+
             <div className='signup-page padding2h5w'>
               <div className='background-top-signup'>
             </div>
               <div className="title-page"> 
-                  <h1>Mis apuestas </h1>
+                    <h1>Mis apuestas </h1>
+                    <div className='filter-bet flex-row '>
+                       <FaSort /> 
+                            <button onClick={handleSortDate}>Por fecha</button>
+                            <button onClick={handleDelete}>Premiado</button>
+
+                    </div>
               </div>
             {!bets && <p>Loading</p>}
             {bets && bets.map(bet => {
@@ -72,7 +102,7 @@ export default function UserBets() {
                             <p>Premiado: {bet.isPrized}</p>
                             </div>
                             <div className='options-bet eurobed'>
-                            <p>Invetido: {bet.euroBet}€</p>
+                            <p>Inversión: {bet.euroBet}€</p>
                             </div>
 
                         </div>   

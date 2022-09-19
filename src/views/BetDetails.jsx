@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useParams, useNavigate } from 'react-router-dom';
+
+
+
+import {useParams, useNavigate, Link, Outlet } from 'react-router-dom';
+import LogoPrimitiva from '../img/logo-primitiva.png'
+
+
+import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaFilter, FaSort } from "react-icons/fa";
 
 
 export default function BetDetails(props) {
@@ -27,44 +34,27 @@ export default function BetDetails(props) {
 
 
      return (
-        <div className='bet-card' key={betUser._id}>
+        <div className='card' key={bet._id}>
+            
+                        <div className='bet-card'>
+                                <div className='bet-img'>
+                                    <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
+                                </div>
+                         
+                                <div className='option-bet'>
+                                    {/* <button onClick={handleDelete} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button> */}
+                                </div>
+                        </div>
+                        <div className='bottom-card-opt'>
+                            <div className='options-bet prized'>
+                            <p>Premiado: {bet.isPrized}</p>
+                            </div>
+                            <div className='options-bet eurobed'>
+                            <p>Inversión: {bet.euroBet}€</p>
+                            </div>
 
-            <h1>Hello</h1>
-            {betUser && (
-                <div className="bet-info">
-                <div className="lottery-pict">
-                    <img src={betUser.image} alt="Primitiva bet"> </img>    
-                </div> 
-                <div className="numbers-section">
-                    <table>
-                        <tr className="header-table"> 
-                            <th>Números jugados</th>
-                            <th>Complementario</th>
-                            <th>Reintegro</th>
-                        </tr>
-                        <tr>
-                            <td>{betUser.num0}</td>
-                            <td>{betUser.num1}</td>
-                            <td>{betUser.num2}</td>
-                            <td>{betUser.num3}</td>
-                            <td>{betUser.num4}</td>
-                            <td>{betUser.num5}</td>
-                        </tr>
-                       
-                        <tr>
-                            <td>{betUser.numReint}</td>
-                        </tr>
-
-                    </table>
-                </div>
-                <div className="lotter-info">
-                    <h2>Date: <span clasName="date">{betUser.date}</span></h2>
-                    
-
-
-                </div>      
-                </div>
-            )}
+                        </div>   
+                        
         </div>
-    )
-}
+            )}
+ 

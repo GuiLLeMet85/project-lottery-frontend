@@ -68,7 +68,7 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 1.8rem;
   font-weight: 300;
   color: var(--dark-blue);
   text-transform: uppercase;
@@ -239,7 +239,6 @@ button.bt-home {
   border-radius: 25px;
 }
 
-
 /* Styles Border */
 
 .radius25px {
@@ -248,6 +247,18 @@ button.bt-home {
 
 .radius15px {
   border-radius: 15px;
+}
+
+/*Display flex styles */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -499,4 +510,14 @@ img.icon-svg {
   justify-content: space-around;
   font-size: 0.7rem;
   color: white;
+}
+
+.filter-bet {
+  background-color: var(--light-blue);
+  justify-content: space-evenly;
+  margin: 2vh auto;
+}
+
+.filter-bet h2 {
+  font-size: 1.5rem;
 }

@@ -23,7 +23,7 @@ export default function UserProfile() {
         const getDataUser = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
-                console.log(response.data.data)
+                //console.log(response.data.data)
                 setUserData({
                   username: response.data.data.username,
                   email: response.data.data.email,
@@ -37,6 +37,8 @@ export default function UserProfile() {
         }
     getDataUser();
     }, [])  
+
+
 
     const handleChange = (e) => {
       const val = e.target.name === 'phoneNum' ? parseInt(e.target.value) : e.target.value
