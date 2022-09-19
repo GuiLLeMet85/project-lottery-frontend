@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import LogoPrimitiva from '../img/logo-primitiva.png'
 import axios from 'axios';
+import XMark from '../img/circle-xmark-regular.svg'
+import { FaHashtag, FaCalendarAlt } from "react-icons/fa";
+
+
 
 export default function UserBets() {
     const [bets, setBets] = useState(null);
@@ -25,18 +30,29 @@ export default function UserBets() {
 
 
     return (
-        <div>
-            <h1>Mis apuestas Primitiva</h1>
+            <div className='signup-page padding2h5w'>
+              <div className='background-top-signup'>
+            </div>
+              <div className="title-page"> 
+                  <h1>Mis apuestas </h1>
+              </div>
             {!bets && <p>Loading</p>}
             {bets && bets.map(bet => {
-            return <div key={bet._id}>
-                <Link to={`/detalles-apuesta/${bet._id}`}>
-                
-                <p>Fecha:</p><h3>{bet.dateLottery}</h3>
-                <p>Números</p><h3>{bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </h3>
-                <p>Reintegro</p><h3>{bet.numReint}</h3>
-                
-                </Link>
+            return <div className='bet-card'key={bet._id}>
+                <div className='bet-img'>
+                     <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
+                </div>
+                <div className='info-bet'>
+                    <p><FaHashtag /><span className='data-bet'> {bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </span></p>
+                    <p><FaHashtag /><span className='data-bet'> {bet.numReint}</span></p>
+                    <p><FaCalendarAlt />:<span className='data-bet'> {bet.dateLottery}</span></p>
+                </div>
+                <div className='option-bet'>
+                     <Link to={`/detalles-apuesta/${bet._id}`}><img src={XMark} className="icon-svg" alt="icon"></img> </Link>
+                     {/* <button onClick={() => onDelete(name)} className="delete-bt"> <FaCalendarTimes className="icon-btn"/> </button> */}
+
+
+                </div>
                 
                 </div>
             })}

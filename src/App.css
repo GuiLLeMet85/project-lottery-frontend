@@ -415,3 +415,30 @@ span.note {
   background-size: cover;
   background-image: url('../src/img/hugo-verber-sLcCWpahOog-unsplash.jpg');
 }
+
+/* BetsUser page*/
+
+.bet-card {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  padding: 2vh 0;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: normal;
+}
+
+.bet-card img {
+  width: 15vw;
+}
+
+span.data-bet {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.info-bet {
+  width: 65vw;
+}
+.info-bet p {
+  font-size: 0.7rem;
+}
