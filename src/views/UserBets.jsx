@@ -10,7 +10,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 
 export default function UserBets() {
-    const { id } = useParams();
+    // const { id } = useParams();
     const navigate = useNavigate();
     const [bets, setBets] = useState(null);
     const storedToken = localStorage.getItem('authToken');
@@ -49,7 +49,7 @@ export default function UserBets() {
     // console.log(sort)
 
 
-    const handleDelete = async () => {
+    const handleDelete = async (id) => {
         try {
           await axios.delete(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
           toast.success('Bet deleted')
@@ -59,7 +59,7 @@ export default function UserBets() {
         }
     }
 
-    const submit = () => {
+    const submit = (id) => {
 
         confirmAlert({
           title: 'Confirm to submit',
@@ -67,7 +67,7 @@ export default function UserBets() {
           buttons: [
             {
               label: 'Yes',
-              onClick: () => handleDelete()
+              onClick: () => handleDelete(id)
             },
             {
               label: 'No',
@@ -115,7 +115,7 @@ export default function UserBets() {
                                 </div>
                             </Link>
                                 <div className='option-bet'>
-                                    <button onClick={submit} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button>
+                                    <button onClick={() => submit(bet._id)} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button>
                                 </div>
                         </div>
                         <div className='bottom-card-opt'>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import DatePicker from 'react-datetime';
 import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
+import { useEffect } from 'react';
 
 export default function NewBet() {
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -14,6 +15,7 @@ export default function NewBet() {
   const navigate = useNavigate();
 
   const [newBet, setNewBet] = useState({
+    dateLottery: '',
     num0: '',
     num1: '',
     num2: '',
@@ -25,13 +27,29 @@ export default function NewBet() {
 
   const [betNunber, setBetNumber] = useState([]);
 
-  const handleChange = (e) => {    const conditionalValue = e.target.name === 'dateLottery' ? e.target.value : parseInt(e.target.value);
+  const handleChange = (e) => {   
+    console.log(e._d) 
+    const conditionalValue = e.target.name === 'dateLottery' ? e.target.value : parseInt(e.target.value);
     setNewBet(prev => {
       return {
         ...prev,
         [e.target.name]: conditionalValue
       }
     })
+  }
+
+  // useEffect(() => {
+  //   console.log(newBet);
+  // }, [newBet])
+
+  const handleDate = (e) => {
+    setNewBet(prev => {
+      return {
+        ...prev,
+        dateLottery: e._d
+      }
+    })
+    console.log(newBet)
   }
 
   const updateBetNumbers = (num) => {
@@ -64,9 +82,9 @@ export default function NewBet() {
     </div> 
 
             <form onSubmit={handleSubmit} className='bet-form padding2x2'>
-            {/* <DatePicker
+            <DatePicker
               timeFormat={false}
-              onChange={handleChange}
+              onChange={handleDate}
               isValidDate={disableDays}
               name="dateLottery"
               input={true}
@@ -75,7 +93,7 @@ export default function NewBet() {
               // onChange={dateLottery => handleChange(dateLottery)}
               className="date-picker" 
               type="date"
-            /> */}
+            />
 
              <div><b>Date:</b> {dt.format('LLL')}</div>
               <div className='data-bet'>

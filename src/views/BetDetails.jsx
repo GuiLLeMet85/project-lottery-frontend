@@ -18,7 +18,7 @@ export default function BetDetails() {
         const getData = async () => {
           try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
-            //console.log(response);
+            console.log('From DB', response.data.data);
             setBet(response.data.data)
           } catch (error) {
             console.error(error);
@@ -32,7 +32,7 @@ export default function BetDetails() {
           setBet(prev => {
             return {
               ...prev,
-              [e.target.name]: e.target.value
+              [e.target.name]: parseInt(e.target.value)
             }
           })
           console.log(bet)
@@ -78,9 +78,11 @@ export default function BetDetails() {
       }
 
     const handleSubmit = async (e) => {
+      console.log('Submit', bet)
         e.preventDefault();
         try {
-          const betUpdated= await axios.put(`${process.env.REACT_APP_API_URL}/bet/${id}`, bet, { headers: { Authorization: `Bearer ${storedToken}` } });
+          const betUpdated= await axios.put(`${process.env.REACT_APP_API_URL}/bets/${id}`, bet, { headers: { Authorization: `Bearer ${storedToken}` } });
+          console.log('Edited', betUpdated);
           navigate(`/`)
         } catch (error) {
           console.error(error);
@@ -107,12 +109,12 @@ export default function BetDetails() {
                             <div className='select-numbers'>
                                 <label>Números sorteo <span className="note">(del 01 al 49)</span></label>
                                     <div>    
-                                        <input type="number" name="num0" placeholder="1 a 49" value={bet.num0} min='01' max='49' onChange={handleChange} />
-                                        <input type="number" name="num1" placeholder="1 a 49" value={bet.num1} min='01' max='49' onChange={handleChange} />
-                                        <input type="number" name="num2" placeholder="1 a 49" value={bet.num2} min='01' max='49' onChange={handleChange} />
-                                        <input type="number" name="num3" placeholder="1 a 49" value={bet.num3} min='01' max='49' onChange={handleChange} />
-                                        <input type="number" name="num4" placeholder="1 a 49" value={bet.num4} min='01' max='49' onChange={handleChange} />
-                                        <input type="number" name="num5" placeholder="1 a 49" value={bet.num5} min='01' max='49' onChange={handleChange} />
+                                        <input type="number" name="num0" placeholder="1 a 49" value={bet.num0} min={1} max={49} onChange={handleChange} />
+                                        <input type="number" name="num1" placeholder="1 a 49" value={bet.num1} min='1' max='49' onChange={handleChange} />
+                                        <input type="number" name="num2" placeholder="1 a 49" value={bet.num2} min='1' max='49' onChange={handleChange} />
+                                        <input type="number" name="num3" placeholder="1 a 49" value={bet.num3} min='1' max='49' onChange={handleChange} />
+                                        <input type="number" name="num4" placeholder="1 a 49" value={bet.num4} min='1' max='49' onChange={handleChange} />
+                                        <input type="number" name="num5" placeholder="1 a 49" value={bet.num5} min='1' max='49' onChange={handleChange} />
                                     </div>
                             </div>
                             <div className='reintegro-num'>
