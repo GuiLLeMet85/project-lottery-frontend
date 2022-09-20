@@ -4,6 +4,8 @@ import LogoPrimitiva from '../img/logo-primitiva.png'
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaFilter, FaSort } from "react-icons/fa";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 
 
@@ -57,6 +59,25 @@ export default function UserBets() {
         }
     }
 
+    const submit = () => {
+
+        confirmAlert({
+          title: 'Confirm to submit',
+          message: 'Are you sure to do this.',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: () => handleDelete()
+            },
+            {
+              label: 'No',
+              //onClick: () => alert('Click No')
+            }
+          ]
+        });
+      }
+
+
     const handleSortDate = () => {
         const sortDate = [...bets].sort((a, b) => a.dateLottery - b.dateLottery);
         setBets(sortDate);
@@ -94,7 +115,7 @@ export default function UserBets() {
                                 </div>
                             </Link>
                                 <div className='option-bet'>
-                                    <button onClick={handleDelete} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button>
+                                    <button onClick={submit} className="delete-bt"> <FaCalendarTimes className="icon-btn"/></button>
                                 </div>
                         </div>
                         <div className='bottom-card-opt'>

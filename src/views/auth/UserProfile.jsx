@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { FaTrashAlt} from "react-icons/fa";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 export default function UserProfile() {
     const storedToken = localStorage.getItem('authToken');
@@ -88,6 +90,24 @@ export default function UserProfile() {
       }
     }
 
+    const submit = () => {
+
+      confirmAlert({
+        title: 'Confirm to submit',
+        message: 'Are you sure to do this.',
+        buttons: [
+          {
+            label: 'Yes',
+            onClick: () => handleDelete()
+          },
+          {
+            label: 'No',
+            //onClick: () => alert('Click No')
+          }
+        ]
+      });
+    }
+
     return (
               <div className='signup-page padding2h5w'>
               <div className='background-top-signup'>
@@ -102,7 +122,7 @@ export default function UserProfile() {
 
                         <div className="delete-user">
                         <p>¿Quieres borrar tu usuario?</p>
-                            <button type="submit" className="bt-delete radius25px" onClick= {handleDelete}>
+                            <button type="submit" className="bt-delete radius25px" onClick= {submit}>
                              <FaTrashAlt  className='title-icon-nav'/>
                             </button>
                         </div>

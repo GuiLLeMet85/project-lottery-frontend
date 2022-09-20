@@ -373,6 +373,10 @@ button.bt-home {
   padding: 1vh 2vw;
 }
 
+.signup-page {
+  padding-bottom: 15vh;
+}
+
 /* Edit profile*/
 
 .profile-top {

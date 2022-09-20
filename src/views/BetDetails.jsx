@@ -4,6 +4,8 @@ import toast from 'react-hot-toast';
 import {useParams, useNavigate, Link, Outlet } from 'react-router-dom';
 import LogoPrimitiva from '../img/logo-primitiva.png'
 import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaFilter, FaSort } from "react-icons/fa";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 
 export default function BetDetails() {
@@ -45,6 +47,35 @@ export default function BetDetails() {
           console.error(error);
         }
     };  
+
+  //   const Delete = async () => {
+
+  //     try {
+  //       await axios.delete(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+  //       toast.success('Bet deleted')
+  //       navigate("/listado-apuestas-primitiva/");
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  // };  
+
+      const submit = () => {
+
+        confirmAlert({
+          title: 'Confirm to submit',
+          message: 'Are you sure to do this.',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: () => handleDelete()
+            },
+            {
+              label: 'No',
+              //onClick: () => alert('Click No')
+            }
+          ]
+        });
+      }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -93,7 +124,7 @@ export default function BetDetails() {
                             </div>
                                     <button type="submit" className="bt-submit radius25px">Guardar cambios</button>
                         </form>
-                        <button onClick={handleDelete}> Borrar</button>
+                        <button onClick={submit}> Borrar</button>
 
                        
                         </div>
