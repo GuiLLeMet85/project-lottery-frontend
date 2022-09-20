@@ -92,7 +92,7 @@ export default function BetDetails() {
                <div className='bet-details-view'>
                         { bet && (
                                <div className='signup-page padding2h5w'>
-                               <div className='background-top-signup'>
+                               <div className='background-top-signup radius15px'>
                                </div>
                                <div className="title-page"> 
                                <h1>Detalles apuesta</h1>  

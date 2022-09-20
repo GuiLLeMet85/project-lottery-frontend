@@ -87,7 +87,7 @@ export default function UserBets() {
     return (
 
             <div className='signup-page padding2h5w'>
-              <div className='background-top-signup'>
+              <div className='background-top-signup radius15px'>
             </div>
               <div className="title-page"> 
                     <h1>Mis apuestas </h1>

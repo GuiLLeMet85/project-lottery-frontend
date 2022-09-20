@@ -18,7 +18,7 @@ export default function Navbar() {
     const getDataUser = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
-            console.log(response.data.data)
+            //console.log(response.data.data)
             setUserData({
               username: response.data.data.username,
               userPicture: response.data.data.userPicture,

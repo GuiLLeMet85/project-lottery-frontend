@@ -60,11 +60,15 @@ a {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 500;
   color: var(--dark-blue);
   text-transform: uppercase;
   text-align: center;
+  background-color: var(--light-blue);
+  padding: 1vh 0;
+  border-radius: 15px;
+  margin-bottom: 2vh;
 }
 
 h2 {
@@ -366,6 +370,7 @@ button.bt-home {
   height: 5vh;
   padding: 1vh 2vw;
   margin: 0.5vh 0vw;
+  border-radius: 25px;
 }
 
 .title-icon-subm{

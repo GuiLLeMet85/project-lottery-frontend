@@ -39,7 +39,7 @@ export default function Login() {
 
   return (
     <div className='signup-page padding2h5w'>
-        <div className='background-top-login'>
+        <div className='background-top-login radius15px'>
         </div>
 
       <div className="title-page"> 
