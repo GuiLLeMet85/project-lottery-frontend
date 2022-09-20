@@ -397,10 +397,13 @@ button.bt-home {
 }
 
 .bet-form input {
-  height: 5vh;
-  width: 15vw;
   padding: 2vh 2vw;
   margin: 0.5vh 0vw;
+  border: 1px solid var(--blue);
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--light-blue);
 }
 
 .bet-form input.date-picker {
