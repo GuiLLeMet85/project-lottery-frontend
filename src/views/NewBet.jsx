@@ -64,7 +64,7 @@ export default function NewBet() {
     </div> 
 
             <form onSubmit={handleSubmit} className='bet-form padding2x2'>
-            <DatePicker
+            {/* <DatePicker
               timeFormat={false}
               onChange={handleChange}
               isValidDate={disableDays}
@@ -75,13 +75,13 @@ export default function NewBet() {
               // onChange={dateLottery => handleChange(dateLottery)}
               className="date-picker" 
               type="date"
-            />
+            /> */}
 
              <div><b>Date:</b> {dt.format('LLL')}</div>
               <div className='data-bet'>
                   <label>Fecha sorteo<span className="note"> (lunes, jueves y sábados)</span></label>
                   <div>
-                  {/* <input className="date-picker" type="date" name="dateLottery" value={newBet.dateLottery} onChange={handleChange} /> */}
+                  <input className="date-picker" type="date" name="dateLottery" value={newBet.dateLottery} onChange={handleChange} />
                   </div>
               </div>
              <div className='select-numbers'>
