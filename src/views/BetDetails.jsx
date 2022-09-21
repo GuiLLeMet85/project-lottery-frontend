@@ -83,7 +83,7 @@ export default function BetDetails() {
         try {
           const betUpdated= await axios.put(`${process.env.REACT_APP_API_URL}/bets/${id}`, bet, { headers: { Authorization: `Bearer ${storedToken}` } });
           console.log('Edited', betUpdated);
-          navigate(`/`)
+          navigate(`/listado-apuestas-primitiva/`)
         } catch (error) {
           console.error(error);
         }

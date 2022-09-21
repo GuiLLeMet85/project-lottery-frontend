@@ -407,12 +407,18 @@ button.bt-home {
 
 .bet-form input {
   padding: 2vh 2vw;
-  margin: 0.5vh 0vw;
+  margin: 0.5vh 0vw 0.5vw 2vw;
   border: 1px solid var(--blue);
   border-radius: 20px;
   width: 40px;
   height: 40px;
   background-color: var(--light-blue);
+  text-align: center;
+}
+
+input.form-control {
+  width: 25vw;
+  text-align: center;
 }
 
 .bet-form input.date-picker {

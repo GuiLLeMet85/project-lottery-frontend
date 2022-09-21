@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import DatePicker from 'react-datetime';
-import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
-import { useEffect } from 'react';
+
 
 export default function NewBet() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const storedToken = localStorage.getItem('authToken');
-  const [dt, setDt] = useState(moment())
-  //const [errorRepeatMessage, setErrorRepeatMessage] = useState(null);
   const navigate = useNavigate();
+  const [betNunber, setBetNumber] = useState([]);
 
   const [newBet, setNewBet] = useState({
     dateLottery: '',
@@ -25,22 +23,31 @@ export default function NewBet() {
     numReint:'',
   })
 
-  const [betNunber, setBetNumber] = useState([]);
+  // handlechange it works 
+  // const handleChange = (e) => {
 
-  const handleChange = (e) => {   
-    console.log(e._d) 
-    const conditionalValue = e.target.name === 'dateLottery' ? e.target.value : parseInt(e.target.value);
+  //   setNewBet(prev => {
+  //     return {
+  //       ...prev,
+  //       [e.target.name]: e.target.value
+  //     }
+  //   })
+  //   //console.log(newBet)
+  // }
+
+  const handleChange = (e) => {
+    const conditionalValue = e.target.name === 'num0' && e.target.name === 'duration' ? parseInt(e.target.value) : e.target.value;
     setNewBet(prev => {
       return {
         ...prev,
         [e.target.name]: conditionalValue
       }
     })
+    //console.log(newBet)
   }
+  
 
-  // useEffect(() => {
-  //   console.log(newBet);
-  // }, [newBet])
+    // // const sortBetNums = [...betNunber].sort((a,b) => (b.betNunber > a.betNunber) ? 1 : -1); 
 
   const handleDate = (e) => {
     setNewBet(prev => {
@@ -49,13 +56,15 @@ export default function NewBet() {
         dateLottery: e._d
       }
     })
-    console.log(newBet)
+    //console.log(newBet)
   }
 
-  const updateBetNumbers = (num) => {
-    setBetNumber(num);
-    // console.log(betNunber);
-  }
+  // const updateBetNumbers = (num) => {
+  //     const numBets = [{num0}, 'num1', 'num2', 'num3', 'num4', 'num5' ]
+
+  //   setBetNumber(num);
+  //   // console.log(betNunber);
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,41 +76,32 @@ export default function NewBet() {
       setErrorMessage(error.response.data.error)
     }
   }
-
-   // disable weekends
+   // To disable days week whithout bet
    const disableDays = current => {
-    return current.day() !== 0 && current.day() !== 2 && current.day() !== 3 && current.day() !== 5;
+      return current.day() !== 0 && current.day() !== 2 && current.day() !== 3 && current.day() !== 5;
   }
 
   return (
     <div className='signup-page padding2h5w'>
-    <div className='background-top-bet'>
-    </div>
+    <div className='background-top-bet'></div>
     <div className="title-page"> 
         <h1>Jugar a la Primitiva </h1>
     </div> 
 
             <form onSubmit={handleSubmit} className='bet-form padding2x2'>
-            <DatePicker
-              timeFormat={false}
-              onChange={handleDate}
-              isValidDate={disableDays}
-              name="dateLottery"
-              input={true}
-              dateFormat="DD-MM-YYYY"
-              value={newBet.dateLottery}
-              // onChange={dateLottery => handleChange(dateLottery)}
-              className="date-picker" 
-              type="date"
-            />
-
-             <div><b>Date:</b> {dt.format('LLL')}</div>
               <div className='data-bet'>
                   <label>Fecha sorteo<span className="note"> (lunes, jueves y sábados)</span></label>
-                  <div>
-                  <input className="date-picker" type="date" name="dateLottery" value={newBet.dateLottery} onChange={handleChange} />
-                  </div>
-              </div>
+                    <DatePicker
+                      timeFormat={false}
+                      onChange={handleDate}
+                      isValidDate={disableDays}
+                      name="dateLottery"
+                      input={true}
+                      dateFormat="DD-MM-YYYY"
+                      value={newBet.dateLottery}
+                      className="date-picker" 
+                      type="date"
+                    />              </div>
              <div className='select-numbers'>
                   <label>Números sorteo <span className="note">(del 01 al 49)</span></label>
                   <div>    

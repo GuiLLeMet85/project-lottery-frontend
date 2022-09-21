@@ -11,7 +11,6 @@ export default function UserProfile() {
     const storedToken = localStorage.getItem('authToken');
     const navigate = useNavigate();
     const { user, logOutUser } = useContext(AuthContext);
-    // const { id } = useParams();
     const [errorMessage, setErrorMessage] = useState(undefined);
     const [userData, setUserData] = useState({
         username: '',
@@ -20,7 +19,6 @@ export default function UserProfile() {
         phoneNum: ''
       })
 
- 
    useEffect(() => {
         const getDataUser = async () => {
             try {
@@ -39,8 +37,6 @@ export default function UserProfile() {
         }
     getDataUser();
     }, [])  
-
-
 
     const handleChange = (e) => {
       const val = e.target.name === 'phoneNum' ? parseInt(e.target.value) : e.target.value
@@ -93,8 +89,8 @@ export default function UserProfile() {
     const submit = () => {
 
       confirmAlert({
-        title: 'Confirm to submit',
-        message: 'Are you sure to do this.',
+        // title: 'Confirm to submit',
+        message: '¿Seguro que quieres borrarlo?',
         buttons: [
           {
             label: 'Yes',
