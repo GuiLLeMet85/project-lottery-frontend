@@ -8,7 +8,6 @@ export default function Signup() {
           username: '',
           email: ''
         })
-
         const [password, setPassword] = useState('');
         const [passwordControl, setPasswordControl] = useState('');
         const [errorMessage, setErrorMessage] = useState(undefined);
@@ -22,7 +21,6 @@ export default function Signup() {
             }
           })
         }
-        
         useEffect(() => {
           if (password !== passwordControl) {
             setErrorMessage("Passwords don't match")
