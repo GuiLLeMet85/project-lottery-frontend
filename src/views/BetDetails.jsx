@@ -18,7 +18,7 @@ export default function BetDetails() {
         const getData = async () => {
           try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
-            console.log('From DB', response.data.data);
+            //console.log('From DB', response.data.data);
             setBet(response.data.data)
           } catch (error) {
             console.error(error);

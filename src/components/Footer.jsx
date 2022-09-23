@@ -22,7 +22,7 @@ export default function Footer(){
             </NavLink>}
 
         <NavLink className={(element) => 
-            element.isActive ? 'selected' : ''} to="/">
+            element.isActive ? 'selected' : ''} to="/resultados-primitiva/">
             <div className='bt-back icon-footer-sect'>    
                 <FaRegListAlt className='icon-foot'/><span className="title-icon">Sorteos</span></div>
         </NavLink>
