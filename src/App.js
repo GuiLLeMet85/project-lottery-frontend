@@ -14,7 +14,7 @@ import UserProfile from './views/auth/UserProfile';
 import NewBet from './views/NewBet';
 import BetDetails from './views/BetDetails';
 import Footer from './components/Footer';
-import ResultsPrimitiva from './views/ResultsPrimitiva';
+import Primitivas from './views/Primitivas';
 
 
 function App(props) {
@@ -35,14 +35,13 @@ function App(props) {
         <Route path="/" element={<Home />} />
         <Route path="/signup/" element={<Signup />} />
         <Route path="/login/" element={<Login />} />
-        <Route path="/resultados-primitiva/" element={<ResultsPrimitiva />} />
+        <Route path="/resultados-primitiva/" element={<Primitivas />} />
         <Route path="/perfil-usuario/" element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path="/apostar-primitiva/" element={<IsPrivate><NewBet/></IsPrivate>}/>
         <Route path="/listado-apuestas-primitiva/" element={<IsPrivate><UserBets/></IsPrivate>}/> 
         <Route path="/detalles-apuesta/:id" element={<IsPrivate><BetDetails/></IsPrivate>}/> 
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
-
       </Routes>
 
       <Footer />

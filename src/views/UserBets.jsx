@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {useParams, useNavigate, Link, Outlet } from 'react-router-dom';
+import {useNavigate, Link, Outlet } from 'react-router-dom';
 import LogoPrimitiva from '../img/logo-primitiva.png'
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaFilter, FaSort } from "react-icons/fa";
+import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaSort } from "react-icons/fa";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
@@ -44,11 +44,6 @@ export default function UserBets() {
     getBets();
     }, [])
   
-    // const numsBet = [num0, num1  ];
-    // const sortNumBets = numsBet()
-    // console.log(sort)
-
-
     const handleDelete = async (id) => {
         try {
           await axios.delete(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
@@ -60,13 +55,12 @@ export default function UserBets() {
     }
 
     const submit = (id) => {
-
         confirmAlert({
-          title: 'Confirm to submit',
-          message: 'Are you sure to do this.',
+          title: 'Confirmación',
+          message: '¿Estás que deseas eliminarlo?',
           buttons: [
             {
-              label: 'Yes',
+              label: 'Sí',
               onClick: () => handleDelete(id)
             },
             {
@@ -77,13 +71,11 @@ export default function UserBets() {
         });
       }
 
-
     const handleSortDate = () => {
         const sortDate = [...bets].sort((a, b) => a.dateLottery - b.dateLottery);
         setBets(sortDate);
       }
     
-
     return (
 
             <div className='signup-page padding2h5w'>
@@ -95,7 +87,6 @@ export default function UserBets() {
                        <FaSort /> 
                             <button onClick={handleSortDate}>Por fecha</button>
                             <button onClick={handleDelete}>Premiado</button>
-
                     </div>
               </div>
             {!bets && <p>Loading</p>}
