@@ -4,10 +4,11 @@ Lottery Wallet
 
 ## Description
 
-This application is called Lottery Wallet. It is used for ...
+This application is called "Lottery Wallet". It is used for storage of Primitiva's belts of a registered user. A guest and login user can check the history of Primita's results.
+
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
-![](picture.png)
+> ![](/src/img/trebol-home.png)
 
 ---
 ## Instructions
