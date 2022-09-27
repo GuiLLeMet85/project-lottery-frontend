@@ -3,8 +3,6 @@ import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import LogoPrimitiva from '../img/logo-primitiva.png'
 import { FaHashtag, FaCalendarAlt, FaRegistered, FaCopyright } from "react-icons/fa";
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 export default function Primitivas() {
     const [primitivas, setPrimitivas] = useState(null);
@@ -23,30 +21,32 @@ export default function Primitivas() {
       }, [])
 
     return (
-        <div>
-        <h1> Resultados y Estadísticas</h1>
+      <div className='signup-page padding2h5w'>
+              <div className='background-top-signup radius15px'>
+            </div>
+              <div className="title-page"> 
+                    <h1>Resultados Primitiva </h1>
+                    
+              </div>
         {!primitivas && <p>Loading</p>}
         {primitivas && primitivas.map(primitiva => {
              return <div className='card' key={primitiva._id}>
                         <div className='bet-card'>
-                                <div className='bet-img'>
+                                <div className='bet-img-prim'>
                                     <img src={LogoPrimitiva} alt="logo-primitiva"></img> 
                                 </div>
-                            <Link to={`/detalles-apuesta/${primitiva._id}`}>
-                                <div className='info-bet'>
+                                <div className='info-bet-prim'>
                                         <p className='date-bet'><FaCalendarAlt className='icons-bet'/>:<span className='date-bet'> {primitiva.date}</span></p>
-                                    <div className='combination-bet'>
-                                        <p className='nums-bet'><FaHashtag className='icons-bet' /><span className='data-bet'> {primitiva.num0}, {primitiva.num1}, {primitiva.num2}, {primitiva.num3}, {primitiva.num4}, {primitiva.num5} </span></p>
-                                        <p className='reint-bet'> <FaCopyright className='icons-bet'/><span className='data-bet'> {primitiva.numCompl}</span></p>
-                                        <p className='reint-bet'> <FaRegistered className='icons-bet'/><span className='data-bet'> {primitiva.numReint}</span></p>
-                                    </div>
+                                        <div className='combination-bet'>
+                                            <p className='nums-bet'><FaHashtag className='icons-bet' /><span className='data-bet-prim'> {primitiva.num0}, {primitiva.num1}, {primitiva.num2}, {primitiva.num3}, {primitiva.num4}, {primitiva.num5} </span></p>
+                                            <p className='reint-bet-prim'> <FaCopyright className='icons-bet'/><span className='data-bet'> {primitiva.numCompl}</span></p>
+                                            <p className='reint-bet-prim'> <FaRegistered className='icons-bet'/><span className='data-bet'> {primitiva.numReint}</span></p>
+                                        </div>
                                 </div>
-                            </Link>
-                           
                         </div>
                         <div className='bottom-card-opt'>
                             <div className='options-bet prized'>
-                            <p>Premiado: {primitiva.isPrized}</p>
+                            <p></p>
                             </div>
                             <div className='options-bet eurobed'>
                             <p>Inversión: 1€</p>

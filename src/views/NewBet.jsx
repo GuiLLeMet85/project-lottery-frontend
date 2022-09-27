@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import DatePicker from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import 'moment/locale/es';
+// import { format } from 'date-fns'
+// import { es } from 'date-fns/locale'
+
+
 export default function NewBet() {
   const [errorMessage, setErrorMessage] = useState(null);
   const storedToken = localStorage.getItem('authToken');
@@ -18,6 +23,7 @@ export default function NewBet() {
     num5: '',
     numReint:'',
   })
+
 
   const handleChange = (e) => {
       setNewBet(prev => {
@@ -35,24 +41,27 @@ export default function NewBet() {
       }
     })
   }
+
    const disableDays = current => {
       return current.day() !== 0 && current.day() !== 2 && current.day() !== 3 && current.day() !== 5;
    }
-  useEffect(() => {
-    console.log(newBet);
-  },[newBet])
+  // useEffect(() => {
+  //   console.log(newBet);
+  // },[newBet])
+
   const checkValidations = (e) => {
     e.preventDefault()
     const numbersLotery = [newBet.num0, newBet.num1, newBet.num2, newBet.num3, newBet.num4, newBet.num5].sort(function (a, b) { return a - b; });
     const unicos = numbersLotery.filter(function (numero, index, array) {
       return array.indexOf(numero) === index;
     })
-    if (unicos.length !== numbersLotery.length) {
-      setErrorMessage("Hay números repetidos");
-    } else if (unicos.length === numbersLotery.length) {
-      setErrorMessage(undefined)
-      handleSubmit();
-    }
+        if (unicos.length !== numbersLotery.length) {
+          setErrorMessage("Hay números repetidos");
+        } 
+        else if (unicos.length === numbersLotery.length) {
+          setErrorMessage(undefined)
+          handleSubmit();
+        }
   }
   const handleSubmit = async () => {
       try {
@@ -64,26 +73,52 @@ export default function NewBet() {
           setErrorMessage(error.response.data.error)
         }
   };
+
+  
   return (
+    
     <div className='signup-page padding2h5w'>
     <div className='background-top-bet'></div>
     <div className="title-page">
         <h1>Jugar a la Primitiva </h1>
     </div>
             <form onSubmit={checkValidations} className='bet-form padding2x2'>
-              <div className='data-bet'>
-                  <label>Fecha sorteo<span className="note"> (lunes, jueves y sábados)</span></label>
-                    <DatePicker
-                      timeFormat={false}
-                      onChange={handleDate}
-                      isValidDate={disableDays}
-                      name="dateLottery"
-                      input={true}
-                      dateFormat="DD-MM-YYYY"
-                      value={newBet.dateLottery}
-                      className="date-picker"
-                      type="date"
-                    />              </div>
+                  <div className='data-bet'>
+                      <label>Fecha sorteo<span className="note"> (lunes, jueves y sábados)</span></label>
+                        <DatePicker
+                          timeFormat={false}
+                          onChange={handleDate}
+                          isValidDate={disableDays}
+                          name="dateLottery"
+                          input={true}
+                          // dateFormat="YYYY-MM-DD"
+                          dateFormat="L"
+                          value={newBet.dateLottery}
+                          className="date-picker"
+                          type="String"
+                        />
+{/* 
+          <DatePicker
+                  timeFormat={true}
+                  
+             
+                  name="dateLottery"
+                  input={true}
+              
+             
+                  className="date-picker"
+                  type="date"
+                  initialViewMode="Monday"
+                  
+                  value={newBet.dateLottery}
+                  selected={startDate}
+                  onChange={handleDate}
+                  isValidDate={disableDays}
+                  tabIndex={1}
+               
+              /> */}
+                                  
+                </div>
              <div className='select-numbers'>
                   <label>Números sorteo <span className="note">(del 01 al 49)</span></label>
                   <div>

@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -10,8 +10,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 export default function UserProfile() {
     const storedToken = localStorage.getItem('authToken');
     const navigate = useNavigate();
-    const { user, logOutUser } = useContext(AuthContext);
-    const [errorMessage, setErrorMessage] = useState(undefined);
+    const {logOutUser } = useContext(AuthContext);
+    const [errorMessage] = useState(undefined);
     const [userData, setUserData] = useState({
         username: '',
         email: '',

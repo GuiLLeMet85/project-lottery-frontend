@@ -553,3 +553,27 @@ img.icon-svg {
 .bet-details-view {
   padding-bottom: 15vh;
 }
+
+/* Results Primitiva page*/
+
+.reint-bet-prim {
+  padding-left: 0.2vw;
+  width: 5.5vw;
+}
+
+.bet-img-prim {
+  width: 15vw;
+}
+
+.info-bet-prim {
+  width: 65vw;
+  margin: 0 auto;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+}
+
+.data-bet-prim {
+  font-size: 1.1rem;
+  font-weight: 600;
+  word-spacing: -0.1em
+}
