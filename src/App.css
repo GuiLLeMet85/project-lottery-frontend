@@ -342,8 +342,6 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] { -moz-appearance:textfield; }
 
 
-
-
 /* Login Page*/
 
 .title-page {
@@ -364,10 +362,25 @@ input[type=number] { -moz-appearance:textfield; }
   background-image: url('../src/img/tim-foster-Sf23azHZRR4-unsplash.jpg');
 } 
 
+.background-top-edit{
+  height: 15vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../src/img/beautiful-shot-grassy-hills-covered-trees-near-mountains-dolomites-italy.jpg');
+} 
+
+.background-top-primitivas {
+  height: 15vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url('../src/img/panoramic-view-roys-peak-new-zealand-with-low-mountains-distance-cloudscape.jpg');
+}
+
+
 .login-form {
   display: flex;
   flex-direction: column;
-  padding: 5vh 0vw 15vh;
+  padding: 1vh 0vw 15vh;
 }
 
 .login-form label {

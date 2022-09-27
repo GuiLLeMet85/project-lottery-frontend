@@ -46,7 +46,6 @@ export default function UserBets() {
                 })
             } 
             catch (error) {
-                console.log(error)
             }
         }
     getBets();
@@ -74,7 +73,6 @@ export default function UserBets() {
             },
             {
               label: 'No',
-              //onClick: () => alert('Click No')
             }
           ]
         });
@@ -128,7 +126,7 @@ export default function UserBets() {
                                   </div>
                                   <div className='bottom-card-opt'>
                                       <div className='options-bet prized'>
-                                      <p>Premiado: {bet.isPrized}</p>
+                                      <p></p>
                                       </div>
                                       <div className='options-bet eurobed'>
                                       <p>Inversión: {bet.euroBet}€</p>

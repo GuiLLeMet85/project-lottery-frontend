@@ -24,7 +24,6 @@ export default function NewBet() {
     numReint:'',
   })
 
-
   const handleChange = (e) => {
       setNewBet(prev => {
         return {
@@ -66,15 +65,13 @@ export default function NewBet() {
   const handleSubmit = async () => {
       try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/bets`, newBet, { headers: { Authorization: `Bearer ${storedToken}` } });
-        console.log(response.data.data)
           toast.success('Item added succesfully!');
-          navigate(`/listado-apuestas-primitiva`)
+          navigate(`/listado-apuestas-primitiva`);
         } catch (error) {
           setErrorMessage(error.response.data.error)
         }
   };
 
-  
   return (
     
     <div className='signup-page padding2h5w'>
@@ -91,33 +88,11 @@ export default function NewBet() {
                           isValidDate={disableDays}
                           name="dateLottery"
                           input={true}
-                          // dateFormat="YYYY-MM-DD"
                           dateFormat="L"
                           value={newBet.dateLottery}
                           className="date-picker"
                           type="String"
-                        />
-{/* 
-          <DatePicker
-                  timeFormat={true}
-                  
-             
-                  name="dateLottery"
-                  input={true}
-              
-             
-                  className="date-picker"
-                  type="date"
-                  initialViewMode="Monday"
-                  
-                  value={newBet.dateLottery}
-                  selected={startDate}
-                  onChange={handleDate}
-                  isValidDate={disableDays}
-                  tabIndex={1}
-               
-              /> */}
-                                  
+                        />       
                 </div>
              <div className='select-numbers'>
                   <label>Números sorteo <span className="note">(del 01 al 49)</span></label>
@@ -135,7 +110,7 @@ export default function NewBet() {
                   <div>
                   <input required type="number" name="numReint" placeholder=":-)" value={newBet.numReint} min='0' max='9' onChange={handleChange} />
                   </div>
-        </div>
+              </div>
         <div>
           <p></p>
         </div>

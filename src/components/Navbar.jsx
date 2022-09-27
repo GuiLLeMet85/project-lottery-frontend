@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export default function Navbar() {
   const storedToken = localStorage.getItem('authToken');
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
   const [openMenu, setOpenMenu] = useState (false);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -18,7 +18,6 @@ export default function Navbar() {
     const getDataUser = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
-            //console.log(response.data.data)
             setUserData({
               username: response.data.data.username,
               userPicture: response.data.data.userPicture,
@@ -30,7 +29,6 @@ export default function Navbar() {
     }
 getDataUser();
 }, [])  
-
 
   return (
 

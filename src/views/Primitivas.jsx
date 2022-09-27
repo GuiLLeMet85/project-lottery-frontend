@@ -22,7 +22,7 @@ export default function Primitivas() {
 
     return (
       <div className='signup-page padding2h5w'>
-              <div className='background-top-signup radius15px'>
+              <div className='background-top-primitivas radius15px'>
             </div>
               <div className="title-page"> 
                     <h1>Resultados Primitiva </h1>
