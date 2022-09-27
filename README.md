@@ -6,8 +6,8 @@ Lottery Wallet
 
 This application is called "Lottery Wallet". It is used for storage of Primitiva's belts of a registered user. A guest and login user can check the history of Primita's results.
 
-> Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
-> ![](/src/img/demo.jpg)
+
+> ![](../src/img/demo.jpg)
 
 ---
 
@@ -47,6 +47,7 @@ npm run start
 - User can check if a combination numbers has been prized in the past
 - User can check the prizes for each result
 - Integrate API to upload the last results
+- Generate random combinations
 
 ---
 
