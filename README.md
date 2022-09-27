@@ -6,7 +6,6 @@ Lottery Wallet
 
 This application is called "Lottery Wallet". It is used for storage of Primitiva's belts of a registered user. A guest and login user can check the history of Primita's results.
 
-
 > ![](../src/img/demo.jpg)
 
 ---
@@ -55,5 +54,5 @@ npm run start
 
 - [Presentation slides](https://slides.com/guillemb/ellipse)
 - [Backend repository](https://github.com/GuiLLeMet85/project-lottery-back)
-- [Backend deploy]()
-- [Deployed app]()
+- [Backend deploy](https://lottery-wallet-back.herokuapp.com/)
+- [Deployed app](https://lottery-wallet.netlify.app/)

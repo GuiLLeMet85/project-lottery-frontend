@@ -90,13 +90,7 @@ export default function UserBets() {
             </div>
               <div className="title-page"> 
                     <h1>Mis apuestas </h1>
-                    <div className='filter-bet flex-row '>
-                       <FaSort /> 
-                            <button onClick={handleSortDate}>Por fecha</button>
-                            <button onClick={handleDelete}>Premiado</button>
-                    </div>
               </div>
-           
                       {!bets && <p>Loading</p>}
                       {bets && bets.map(bet => {
                           
@@ -107,15 +101,9 @@ export default function UserBets() {
                                           </div>
                                       <Link to={`/detalles-apuesta/${bet._id}`}>
                                           <div className='info-bet'>
-                                                  {/* <p className='date-bet'><FaCalendarAlt className='icons-bet'/>:<span className='date-bet'>{bet.dateLottery}</span></p> */}
-
                                                   <p className='date-bet'><FaCalendarAlt className='icons-bet'/>:<span className='date-bet'>{bet.dateLottery}</span></p> 
                                               <div className='combination-bet'>
                                                   <p className='nums-bet'><FaHashtag className='icons-bet' /><span className='data-bet'> {bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </span></p>
-                                                  
-                                                  
-                        
-
                                                   <p className='reint-bet'> <FaRegistered className='icons-bet'/><span className='data-bet'> {bet.numReint}</span></p>
                                               </div>
                                           </div>
