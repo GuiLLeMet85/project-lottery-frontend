@@ -22,8 +22,7 @@ export default function UserProfile() {
    useEffect(() => {
         const getDataUser = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
-                //console.log(response.data.data)
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`)
                 setUserData({
                   username: response.data.data.username,
                   email: response.data.data.email,

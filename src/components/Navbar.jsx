@@ -5,7 +5,6 @@ import { FaArrowCircleLeft, FaWindowClose, FaHome, FaHouseUser, FaTasks, FaArrow
 import axios from 'axios';
 
 export default function Navbar() {
-  const storedToken = localStorage.getItem('authToken');
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
   const [openMenu, setOpenMenu] = useState (false);
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export default function Navbar() {
   useEffect(() => {
     const getDataUser = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/user/me`)
             setUserData({
               username: response.data.data.username,
               userPicture: response.data.data.userPicture,

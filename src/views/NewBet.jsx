@@ -5,8 +5,6 @@ import axios from 'axios';
 import DatePicker from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/es';
-// import { format } from 'date-fns'
-// import { es } from 'date-fns/locale'
 
 
 export default function NewBet() {
@@ -33,20 +31,19 @@ export default function NewBet() {
       })
   }
   const handleDate = (e) => {
-    setNewBet(prev => {
-      return {
-        ...prev,
-        dateLottery: e._d
-      }
-    })
+    const conditionalValue = e.target.name === 'dateLottery' ? (e.target.value).toISOString().split('L') : e.target.value;
+    console.log(conditionalValue)
+    // setNewBet(prev => {
+    //   return {
+    //     ...prev,
+    //     [e.target.name]: conditionalValue
+    //   }
+    // })
   }
 
    const disableDays = current => {
       return current.day() !== 0 && current.day() !== 2 && current.day() !== 3 && current.day() !== 5;
    }
-  // useEffect(() => {
-  //   console.log(newBet);
-  // },[newBet])
 
   const checkValidations = (e) => {
     e.preventDefault()
@@ -64,7 +61,7 @@ export default function NewBet() {
   }
   const handleSubmit = async () => {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/bets`, newBet, { headers: { Authorization: `Bearer ${storedToken}` } });
+          await axios.post(`${process.env.REACT_APP_API_URL}/bets`, newBet, { headers: { Authorization: `Bearer ${storedToken}` } });
           toast.success('Item added succesfully!');
           navigate(`/listado-apuestas-primitiva`);
         } catch (error) {

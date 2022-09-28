@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import {useParams, useNavigate, Link, Outlet } from 'react-router-dom';
-import LogoPrimitiva from '../img/logo-primitiva.png'
-import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaFilter, FaSort } from "react-icons/fa";// 
+import {useParams, useNavigate} from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import DatePicker from 'react-datetime';
@@ -12,23 +10,23 @@ import 'moment/locale/es';
 
 
 export default function BetDetails() {
-  const [errorMessage, setErrorMessage] = useState(null);
-    const { id } = useParams();
-    const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem('authToken')
+    const {id} = useParams();
+    const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
     const [bet, setBet] = useState(null);
     
     useEffect(() => {
         const getData = async () => {
           try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bets/${id}`)
             setBet(response.data.data)
           } catch (error) {
             console.error(error);
           }
         }
         getData();
-    }, []);
+    }, [id]);
 
     const handleChange = (e) => {
           setBet(prev => {
@@ -96,8 +94,7 @@ export default function BetDetails() {
 
     const handleSubmit = async (e) => {
         try {
-          const response = await axios.put(`${process.env.REACT_APP_API_URL}/bets/${id}`, bet, { headers: { Authorization: `Bearer ${storedToken}` } });
-          //console.log('Edited', betUpdated);
+          await axios.put(`${process.env.REACT_APP_API_URL}/bets/${id}`, bet, { headers: { Authorization: `Bearer ${storedToken}` } });
           toast.success('Item edit succesfully!');
           navigate(`/listado-apuestas-primitiva`);
         } catch (error) {

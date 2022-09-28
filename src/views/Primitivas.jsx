@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import axios from 'axios';
 import LogoPrimitiva from '../img/logo-primitiva.png'
 import { FaHashtag, FaCalendarAlt, FaRegistered, FaCopyright } from "react-icons/fa";
