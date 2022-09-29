@@ -592,3 +592,17 @@ img.icon-svg {
   font-weight: 600;
   word-spacing: -0.1em
 }
+
+/* Error page*/
+
+.sect-error-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.sect-error-404 img {
+  margin: 2vh auto;
+  width: 90%;
+}

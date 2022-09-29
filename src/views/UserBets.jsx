@@ -11,11 +11,10 @@ import 'moment/locale/es';
 
 
 export default function UserBets() {
-    // const { id } = useParams();
     const navigate = useNavigate();
     const [bets, setBets] = useState(null);
     const storedToken = localStorage.getItem('authToken');
-    const [betNum, setBetNum] = useState({
+    const [setBetNum] = useState({
         num0: '',
         num1: '',
         num2: '',
@@ -23,13 +22,6 @@ export default function UserBets() {
         num4: '',
         num5: '',
       })
-      
-    // const [numsSorted, setNumsSorted] = useState({
-
-    // })
-
-    // const numbersPrimitiva = [betNum.num0, betNum.num1, betNum.num2, betNum.num3, betNum.num4, betNum.num5].sort(function (a, b) { return a - b; });
-
 
     useEffect (() => {
         const getBets = async () => {
@@ -49,7 +41,7 @@ export default function UserBets() {
             }
         }
     getBets();
-    }, [])
+    }, [storedToken])
   
 
     const handleDelete = async (id) => {

@@ -26,7 +26,7 @@ export default function BetDetails() {
           }
         }
         getData();
-    }, [id]);
+    }, [id])
 
     const handleChange = (e) => {
           setBet(prev => {
@@ -99,7 +99,7 @@ export default function BetDetails() {
         } catch (error) {
           setErrorMessage(error.response.data.error)
         }
-      };
+    };
   
     return (      
                 <div className='bet-details-view'>
@@ -110,7 +110,6 @@ export default function BetDetails() {
                                <div className="title-page"> 
                                  <h1>Editar apuesta</h1>  
                                </div>
-    
                               <form onSubmit={checkValidations} className="bet-form padding2x2">
                                   <div className='data-bet'>
                                       <label>Fecha sorteo<span className="note"> (lunes, jueves y sábados)</span></label>
@@ -126,7 +125,6 @@ export default function BetDetails() {
                                         type="String"
                                       />
                                     </div>
-                                 
                                   <div className='select-numbers'>
                                       <label>Números sorteo <span className="note">(del 01 al 49)</span></label>
                                           <div>    
@@ -143,14 +141,11 @@ export default function BetDetails() {
                                           <div>
                                               <input type="number" name="numReint" placeholder="0 to 9" value={bet.numReint} min='0' max='9' onChange={handleChange} />
                                           </div>
-
                                   </div>
                                           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                                           <button type="submit" className="bt-submit radius25px">Guardar cambios</button>  <button onClick={submit}> Borrar</button>
-                              </form>
-                                   
+                              </form>        
                         </div>
-  
                         )}
              </div>
     )
