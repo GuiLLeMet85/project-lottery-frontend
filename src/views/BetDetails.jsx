@@ -74,9 +74,8 @@ export default function BetDetails() {
             }
           ]
         });
-      }
+    }
 
-    
     const checkValidations = (e) => {
         e.preventDefault()
         const numbersLotery = [bet.num0, bet.num1, bet.num2, bet.num3, bet.num4, bet.num5].sort(function (a, b) { return a - b; });
