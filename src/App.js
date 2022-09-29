@@ -20,7 +20,6 @@ import Primitivas from './views/Primitivas';
 function App(props) {
   
   const location = useLocation();
-
   const isCurrentURL = (url) => {
       return location.pathname.toLowerCase() === url.toLowerCase();
   }

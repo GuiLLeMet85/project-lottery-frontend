@@ -6,7 +6,6 @@ import DatePicker from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/es';
 
-
 export default function NewBet() {
   const [errorMessage, setErrorMessage] = useState(null);
   const storedToken = localStorage.getItem('authToken');
@@ -31,14 +30,12 @@ export default function NewBet() {
       })
   }
   const handleDate = (e) => {
-    const conditionalValue = e.target.name === 'dateLottery' ? (e.target.value).toISOString().split('L') : e.target.value;
-    console.log(conditionalValue)
-    // setNewBet(prev => {
-    //   return {
-    //     ...prev,
-    //     [e.target.name]: conditionalValue
-    //   }
-    // })
+    setNewBet(prev => {
+      return {
+        ...prev,
+        dateLottery: e._d
+      }
+    })
   }
 
    const disableDays = current => {
