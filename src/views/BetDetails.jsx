@@ -26,7 +26,7 @@ export default function BetDetails() {
           }
         }
         getData();
-    }, [id]);
+    }, [id, storedToken]);
 
     const handleChange = (e) => {
           setBet(prev => {
