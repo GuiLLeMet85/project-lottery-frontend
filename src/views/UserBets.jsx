@@ -3,18 +3,30 @@ import {useNavigate, Link, Outlet } from 'react-router-dom';
 import LogoPrimitiva from '../img/logo-primitiva.png'
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes, FaSort } from "react-icons/fa";
+import { FaHashtag, FaCalendarAlt, FaRegistered, FaCalendarTimes } from "react-icons/fa";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import 'moment/locale/es';
 
 
-
 export default function UserBets() {
-    // const { id } = useParams();
     const navigate = useNavigate();
     const [bets, setBets] = useState(null);
     const storedToken = localStorage.getItem('authToken');
+    const timeFix=function(str){
+      let string=str.toString();  
+      let year=string.slice(11,13);
+      let month=string.slice(5,7);
+      let day=string.slice(8,10);
+      let months={Jan:"January",Feb:"February",Mar:"March",Apr:"April",May:"May",Jun:"June",Jul:"July",Aug:"August",Sep:"September",Oct:"October",Nov:"November",Dec:"December"}
+      Object.entries(months).forEach(ele => {
+        const [key, value] = ele;
+        if(key===month){
+          month=value
+        }
+      })
+        return `${day}/${month}/${year}`
+        }
     const [setBetNum] = useState({
         num0: '',
         num1: '',
@@ -23,7 +35,6 @@ export default function UserBets() {
         num4: '',
         num5: '',
       })
-
 
     useEffect (() => {
         const getBets = async () => {
@@ -72,12 +83,6 @@ export default function UserBets() {
         });
       }
 
-    const handleSortDate = () => {
-        const sortDate = [...bets].sort((a, b) => a.dateLottery - b.dateLottery);
-        setBets(sortDate);
-    }
-
-
     return (
             <div className='signup-page padding2h5w'>
               <div className='background-top-signup radius15px'>
@@ -95,7 +100,7 @@ export default function UserBets() {
                                           </div>
                                       <Link to={`/detalles-apuesta/${bet._id}`}>
                                           <div className='info-bet'>
-                                                  <p className='date-bet'><FaCalendarAlt className='icons-bet'/>:<span className='date-bet'>{bet.dateLottery}</span></p> 
+                                                  <p className='date-bet'><FaCalendarAlt className='icons-bet'/>:<span className='date-bet'>{timeFix(bet.dateLottery)}</span></p> 
                                               <div className='combination-bet'>
                                                   <p className='nums-bet'><FaHashtag className='icons-bet' /><span className='data-bet'> {bet.num0}, {bet.num1}, {bet.num2}, {bet.num3}, {bet.num4}, {bet.num5} </span></p>
                                                   <p className='reint-bet'> <FaRegistered className='icons-bet'/><span className='data-bet'> {bet.numReint}</span></p>
